@@ -4,7 +4,7 @@ const Images = require('./Image');
 
 const DesignerAssetsSchema = new mongoose.Schema({
   status: {
-    enum: ['Active', 'Inactive']
+    enum: ['active', 'inactive']
   },
   totalRating: {
     type: Number,
