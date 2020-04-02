@@ -71,5 +71,4 @@ exports.login = asyncHandler(async (req, res, next) => {
 // @access Private
 exports.logout = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true });
-});
-
+}); */
