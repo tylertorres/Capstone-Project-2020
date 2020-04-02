@@ -1,10 +1,9 @@
 const User = require('../models/User');
-const asyncHandler = require('../middleware/async');
+const asyncHandler = require('../middleware/asyncHandler');
 
 // @info Register a user
 // @route /api/v1/auth/register
 // @access Public
-
 exports.register = asyncHandler(async (req, res, next) => {
   const { name, email, password, role } = req.body;
 
@@ -61,8 +60,7 @@ exports.login = asyncHandler(async (req, res, next) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+    next(err);
   }
 });
 
