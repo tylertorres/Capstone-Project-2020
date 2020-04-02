@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Reviews = require('./Review');
+const Review = require('./Review');
 const Images = require('./Image');
 
 const DesignerAssetsSchema = new mongoose.Schema({
@@ -17,7 +17,7 @@ const DesignerAssetsSchema = new mongoose.Schema({
     required: true
   },
   reviews: {
-    type: [Reviews]
+    type: [Review]
   },
   // Want to display most recent images
   portfolio: {
