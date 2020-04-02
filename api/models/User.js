@@ -25,6 +25,14 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
     select: false
   },
+  profilePicture: {
+    type: String,
+    default: 'no-picture.jpg'
+  },
+  aboutMe: {
+    type: String,
+    default: 'Add something about yourself'
+  },
   createdAt: {
     type: Date,
     default: Date.now
