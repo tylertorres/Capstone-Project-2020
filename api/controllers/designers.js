@@ -8,7 +8,7 @@ const Designer = require('../models/Designer');
 // @route     GET /api/v1/users
 // @access    Private
 exports.getDesigners = asyncHandler(async (req, res, next) => {
-  const designers = await User.aggregate([{ $sample: { size: 5 } }]);
+  const designers = await Designer.aggregate([{ $sample: { size: 5 } }]);
   if (!designers) {
     return next(new ErrorRes('Designers not found', 404));
   }
@@ -29,21 +29,13 @@ exports.getDesigner = asyncHandler(async (req, res, next) => {
 });
 
 // @info      Update a user's description and profile picture
-// @route     GET /api/v1/users/:id/description
+// @route     GET /api/v1/users/:id
 // @access    Private
-exports.updateUserDescription = asyncHandler(async (req, res, next) => {
-  const { description } = req.body;
+exports.updateUserInfo = asyncHandler(async (req, res, next) => {
+  const { profilePic, description } = req.body;
 
-  if (!description) {
-    return next(new ErrorRes('Description not found', 404));
-  }
-
-  await User.findByIdAndUpdate(req.params.id, {
-    aboutMe: description
-  });
-
-  res.status(200).json({
+  res.status(400).json({
     success: true,
-    msg: 'Description updated successfully'
+    msg: `Looking at ${req.params.id}`
   });
 });

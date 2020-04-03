@@ -25,9 +25,9 @@ const ReviewSchema = new mongoose.Schema({
   },
   designer: {
     type: mongoose.Schema.ObjectId,
-    ref: 'User',
+    ref: 'Designer',
     required: true
   }
 });
 
-module.exports = mongoose.model('User', ReviewSchema);
+module.exports = mongoose.model('Review', ReviewSchema);

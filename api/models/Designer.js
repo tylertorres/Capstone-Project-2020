@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const DesignerSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please add a name']
@@ -31,7 +31,25 @@ const UserSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  status: {
+    type: String,
+    enum: ['active', 'inactive']
+  },
+  totalRating: {
+    type: Number,
+    min: 1,
+    max: 5,
+    default: 5
+  },
+  reviews: {
+    type: Array,
+    default: []
+  },
+  portfolio: {
+    type: Array,
+    default: []
   }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Designer', DesignerSchema);
