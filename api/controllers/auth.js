@@ -1,21 +1,26 @@
 const User = require('../models/User');
-const asyncHandler = require('../middleware/async');
+const asyncHandler = require('../middleware/asyncHandler');
+const Designer = require('../models/Designer');
 
 // @info Register a user
 // @route /api/v1/auth/register
 // @access Public
-
 exports.register = asyncHandler(async (req, res, next) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password, isDesigner } = req.body;
 
-  const newUser = await User.create({
-    name,
-    email,
-    password,
-    role
-  });
+  var newUser = {
+    name: name,
+    email: email,
+    password: password
+  };
 
-  res.status(200).json({ success: true, newUser });
+  if (isDesigner) {
+    newUser['status'] = 'inactive';
+    newUser = await Designer.create(newUser);
+  } else {
+    newUser = await User.create(newUser);
+  }
+  res.status(200).json({ success: true, data: newUser });
 });
 
 // @info Login a user
@@ -61,8 +66,7 @@ exports.login = asyncHandler(async (req, res, next) => {
       }
     );
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
+    next(err);
   }
 });
 
@@ -71,5 +75,4 @@ exports.login = asyncHandler(async (req, res, next) => {
 // @access Private
 exports.logout = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true });
-});
-
+}); */
