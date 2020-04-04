@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import { Divider, Avatar, Rating, Button } from 'react-native-elements';
+import { Divider, Avatar, Rating, Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 //import { Rating, AirbnbRating } from 'react-native-ratings';
 import {StyleSheet, View, Text, Image, ImageBackground, TextInput,StatusBar, TouchableOpacity} from 'react-native';
-import { GoogleSignin, GoogleSigninButton, statusCodes} from 'react-native-google-signin';
+//import { GoogleSignin, GoogleSigninButton, statusCodes} from 'react-native-google-signin';
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 
 
 
-function NID({ navigation }) {
+export default function NID({ navigation }) {
     return (    
   
   <View style = {styles.designers}>
@@ -17,17 +17,20 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
 
-    <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID', {})}> 
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+      <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
-      
       
       <Rating
         type = 'custom'
@@ -42,15 +45,19 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
   
-    <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID')}> 
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+      <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
 
       <Rating
@@ -65,15 +72,19 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
 
-      <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID')}> 
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+      <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
 
       <Rating
@@ -88,15 +99,19 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
 
-    <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID')}> 
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+      <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
 
       <Rating
@@ -111,15 +126,19 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
 
-    <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID')}> 
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+      <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
 
       <Rating
@@ -134,15 +153,19 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
 
-    <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID')}> 
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+      <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
 
       <Rating
@@ -157,15 +180,19 @@ function NID({ navigation }) {
 
     <Divider style = {styles.divider} />
 
-    <TouchableOpacity style = {{flexDirection: 'row'}}> 
+    <TouchableOpacity style = {{flexDirection: 'row'}} onPress={() => navigation.navigate('ID')}>
       <Avatar 
         size = "large"
+        containerStyle = {{borderWidth: 3}}
         rounded
         source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
       
-      <View> 
+    <View style = {{alignSelf: 'center'}}> 
         <Text style = {styles.designerName}> Jane Doe</Text>
-        <Text style = {styles.businessName}> Doe Inc. </Text>
+        
+        <Badge 
+          value = {<Text style = {{padding: 20}}>Active</Text>}
+          status = "success" />
       </View>
 
       <Rating
@@ -234,5 +261,3 @@ function NID({ navigation }) {
     }
 
   });
-
-  export default NID;
