@@ -29,8 +29,8 @@ const linkToImage =
 manager.configure({
   google: {
     callback_url: 'io.fullstack.Indesyn:/oauth2redirect',
-    client_id: '648614442575-r878v2hrtf1j3s5ji93ce1s1rec3dot6.apps.googleusercontent.com',
-    client_secret: 'RKAOOnDIGhQhJfknrgcP22CC'
+    client_id: '',
+    client_secret: ''
   }
 });
 
