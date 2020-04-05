@@ -23,7 +23,7 @@ export default function ID({ route, navigation }) {
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
   const button = (
     <Button
-      onPress={() => navigation.popToTop()}
+      onPress={() => navigation.navigate("Chat")}
       icon={
         <Icon reverse name="envelope-o" size={30} type="ionicon" color="blue" />
       }

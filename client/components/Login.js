@@ -9,6 +9,7 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 import {
   GoogleSigninButton,
@@ -19,6 +20,8 @@ import { disableExpoCliLogging } from "expo/build/logs/Logs";
 
 const linkToImage =
   "https://ksassets.timeincuk.net/wp/uploads/sites/56/2018/06/living-room-wallpaper-ideas-map.jpg";
+
+const FONT = Platform.OS == "android" ? "monospace" : "arial";
 
 export default function Login({ navigation }) {
   return (
@@ -51,14 +54,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     paddingTop: 50,
-    fontFamily: "monospace",
+    fontFamily: Platform.OS == "android" ? "monospace" : "arial",
   },
   phrase: {
     fontSize: 25,
     color: "black",
     fontWeight: "bold",
     textAlign: "center",
-    fontFamily: "monospace",
+    fontFamily: FONT,
   },
   logo: {
     width: "100%",

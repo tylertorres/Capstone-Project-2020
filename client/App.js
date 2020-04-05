@@ -9,6 +9,7 @@ import { Header } from "react-native/Libraries/NewAppScreen";
 import NID from "./components/NID";
 import ID from "./components/ID";
 import profileSetup from "./components/profileSetup";
+import Chat from "./components/Chat";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function App() {
           component={profileSetup}
           options={{ headerShown: false }}
         />
+        <Stack.Screen name={"Chat"} component={Chat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

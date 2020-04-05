@@ -17,6 +17,8 @@ import { disableExpoCliLogging } from "expo/build/logs/Logs";
 // UseEffect hook and grab designers from the database
 // Going to need
 
+const FONT = Platform.OS == "android" ? "monospace" : "arial";
+
 export default function NID({ navigation }) {
   return (
     <View style={styles.designers}>
@@ -339,7 +341,7 @@ export default function NID({ navigation }) {
 
       <TouchableOpacity
         style={{ alignSelf: "center" }}
-        onPress={() => navigation.popToTop()}
+        onPress={() => navigation.navigate("Chat")}
       >
         <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
       </TouchableOpacity>
@@ -349,7 +351,7 @@ export default function NID({ navigation }) {
 
 const styles = StyleSheet.create({
   findID: {
-    fontFamily: "monospace",
+    fontFamily: FONT,
     fontSize: 25,
     textAlign: "center",
     padding: 20,
