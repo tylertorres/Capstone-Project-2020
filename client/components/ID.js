@@ -112,7 +112,7 @@ export default function ID({ route, navigation }) {
       </View>
       <TouchableOpacity
         style={{ alignItems: "center", justifyContent: "flex-end" }}
-        onPress={() => navigation.popToTop()}
+        onPress={() => navigation.navigate("Chat")}
       >
         <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
       </TouchableOpacity>
