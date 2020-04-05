@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react';
-import { Avatar, Button, Divider } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React, { Component, useState } from "react";
+import { Avatar, Button, Divider } from "react-native-elements";
+import Icon from "react-native-vector-icons/FontAwesome";
 import {
   StyleSheet,
   View,
@@ -10,22 +10,24 @@ import {
   TextInput,
   TouchableOpacity,
   Picker,
-} from 'react-native';
-import { disableExpoCliLogging } from 'expo/build/logs/Logs';
-import axios from 'axios';
+} from "react-native";
+import { disableExpoCliLogging } from "expo/build/logs/Logs";
+import axios from "axios";
 
 //try putting the enter name, enter email, and picker in a view then the touchopa in a view and move to bottom
 
 export default function profileSetup({ navigation }) {
-  const [name, setName] = useState('default');
-  const [email, setEmail] = useState('default');
-  const [selectedValue, setSelectedValue] = useState('default');
+  const [name, setName] = useState("default");
+  const [email, setEmail] = useState("default");
+  const [selectedValue, setSelectedValue] = useState("default");
 
   function backend() {}
 
   function combined() {
     backend();
-    selectedValue === 'id' ? navigation.navigate('NID') : navigation.navigate('ID');
+    selectedValue === "id"
+      ? navigation.navigate("NID")
+      : navigation.navigate("ID", { name: name, uri: " ", id: "ID" });
   }
 
   return (
@@ -34,7 +36,7 @@ export default function profileSetup({ navigation }) {
 
       <TextInput
         style={styles.nameField}
-        placeholder='e.g John Doe'
+        placeholder="e.g John Doe"
         onChangeText={(val) => setName(val)}
       />
 
@@ -42,25 +44,31 @@ export default function profileSetup({ navigation }) {
 
       <TextInput
         style={styles.nameField}
-        placeholder='e.g example@gmail.com'
-        keyboardType='email-address'
+        placeholder="e.g example@gmail.com"
+        keyboardType="email-address"
         onChangeText={(val) => setEmail(val)}
       />
 
-      <Text style={styles.pickerText}>Please choose who you want to continue as</Text>
+      <Text style={styles.pickerText}>
+        Please choose who you want to continue as
+      </Text>
 
-      <View style={{ alignSelf: 'center' }}>
+      <View style={{ alignSelf: "center" }}>
         <Picker
           selectedValue={selectedValue}
-          style={{ height: 25, width: 150 }}
+          style={{ height: 50, width: 250 }}
           onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
         >
-          <Picker.Item label='User' value='id' />
-          <Picker.Item label='Designer' value='nid' />
+          <Picker.Item label=" " value="null" />
+          <Picker.Item label="User" value="id" />
+          <Picker.Item label="Designer" value="nid" />
         </Picker>
       </View>
 
-      <TouchableOpacity style={styles.continueButton} onPress={() => combined()}>
+      <TouchableOpacity
+        style={styles.continueButton}
+        onPress={() => combined()}
+      >
         <Text style={styles.continueText}>Continue</Text>
       </TouchableOpacity>
     </View>
@@ -70,15 +78,15 @@ export default function profileSetup({ navigation }) {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   enterName: {
     padding: 8,
   },
   nameField: {
     borderWidth: 2,
-    borderColor: '#777',
+    borderColor: "#777",
     padding: 8,
     margin: 10,
     width: 300,
@@ -93,9 +101,9 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 15,
     paddingBottom: 15,
-    backgroundColor: '#00BCD4',
+    backgroundColor: "#00BCD4",
     borderRadius: 30,
-    borderColor: '#fff',
+    borderColor: "#fff",
   },
   continueText: {
     marginLeft: 90,
