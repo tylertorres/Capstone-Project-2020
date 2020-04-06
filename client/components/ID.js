@@ -18,13 +18,19 @@ export default function ID({ route, navigation }) {
   const { name } = route.params;
   const { uri } = route.params;
   const { id } = route.params;
-  const empty = <Text style={styles.account}>Account</Text>;
+  const empty = (
+    <TouchableOpacity>
+      <Text style={styles.account}>Account</Text>
+    </TouchableOpacity>
+  );
   const type = id == 'NID' ? true : false;
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
   const button = (
     <Button
       onPress={() => navigation.navigate('Chat')}
-      icon={<Icon reverse name='envelope-o' size={30} type='ionicon' color='blue' />}
+      icon={
+        <Icon reverse name='envelope-o' size={30} type='ionicon' color='blue' />
+      }
       title='Connect'
       TouchableComponent={TouchableOpacity}
       titleStyle={{ paddingLeft: 10, alignSelf: 'flex-end' }}
@@ -117,12 +123,15 @@ export default function ID({ route, navigation }) {
           />
         </TouchableOpacity>
       </View>
-      {/* <View style={{ paddingTop: 5 }}>
-        <Divider style={styles.divider} />
-      </View> */}
 
-      <Divider style={styles.divider} />
-      <TouchableOpacity>{type ? empty : upload}</TouchableOpacity>
+      {!type && (
+        <View>
+          <Divider style={styles.divider} />
+          <TouchableOpacity>{upload}</TouchableOpacity>
+        </View>
+      )}
+
+      {/* <TouchableOpacity>{type ? empty : upload}</TouchableOpacity> */}
 
       <View style={styles.bottom}>
         <Divider style={styles.divider} />
