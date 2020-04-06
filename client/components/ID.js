@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Avatar, Button, Divider } from "react-native-elements";
-import Icon from "react-native-vector-icons/FontAwesome";
+import React, { Component } from 'react';
+import { Avatar, Button, Divider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   StyleSheet,
   View,
@@ -10,47 +10,45 @@ import {
   TextInput,
   TouchableOpacity,
   ImageStore,
-} from "react-native";
+} from 'react-native';
 //import { GoogleSignin, GoogleSigninButton, statusCodes} from 'react-native-google-signin';
-import { disableExpoCliLogging } from "expo/build/logs/Logs";
+import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 
 export default function ID({ route, navigation }) {
   const { name } = route.params;
   const { uri } = route.params;
   const { id } = route.params;
-  const empty = <Text>""</Text>;
-  const type = id == "NID" ? true : false;
+  const empty = <Text style={styles.account}>Account</Text>;
+  const type = id == 'NID' ? true : false;
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
   const button = (
     <Button
-      onPress={() => navigation.navigate("Chat")}
-      icon={
-        <Icon reverse name="envelope-o" size={30} type="ionicon" color="blue" />
-      }
-      title="Connect"
+      onPress={() => navigation.navigate('Chat')}
+      icon={<Icon reverse name='envelope-o' size={30} type='ionicon' color='blue' />}
+      title='Connect'
       TouchableComponent={TouchableOpacity}
-      titleStyle={{ paddingLeft: 10, alignSelf: "flex-end" }}
-      buttonStyle={{ backgroundColor: "red" }}
+      titleStyle={{ paddingLeft: 10, alignSelf: 'flex-end' }}
+      buttonStyle={{ backgroundColor: 'red' }}
     />
   );
   return (
     <View style={styles.mainView}>
       <View style={styles.idRow}>
         <Avatar
-          size="large"
+          size='large'
           containerStyle={{ borderWidth: 3 }}
           rounded
           source={{
             uri: uri,
           }}
         />
-        <View style={{ alignSelf: "center" }}>
+        <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerInfo}>{name}</Text>
         </View>
 
         <View
           style={{
-            alignSelf: "center",
+            alignSelf: 'center',
             paddingLeft: 100,
           }}
         >
@@ -66,7 +64,7 @@ export default function ID({ route, navigation }) {
             style={styles.imageView}
             source={{
               uri:
-                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1",
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1',
             }}
           />
         </TouchableOpacity>
@@ -76,7 +74,7 @@ export default function ID({ route, navigation }) {
             style={styles.imageView}
             source={{
               uri:
-                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1",
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1',
             }}
           />
         </TouchableOpacity>
@@ -86,7 +84,7 @@ export default function ID({ route, navigation }) {
             style={styles.imageView}
             source={{
               uri:
-                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1",
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1',
             }}
           />
         </TouchableOpacity>
@@ -96,26 +94,45 @@ export default function ID({ route, navigation }) {
             style={styles.imageView}
             source={{
               uri:
-                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1",
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1',
+            }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image
+            style={styles.imageView}
+            source={{
+              uri:
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1',
+            }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image
+            style={styles.imageView}
+            source={{
+              uri:
+                'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FJZOIUT88EVc%2Fhqdefault.jpg&f=1&nofb=1',
             }}
           />
         </TouchableOpacity>
       </View>
-      <View style={{ paddingTop: 5 }}>
+      {/* <View style={{ paddingTop: 5 }}>
         <Divider style={styles.divider} />
-      </View>
+      </View> */}
 
+      <Divider style={styles.divider} />
       <TouchableOpacity>{type ? empty : upload}</TouchableOpacity>
 
-      <View style={{ paddingTop: 5 }}>
+      <View style={styles.bottom}>
         <Divider style={styles.divider} />
+        <TouchableOpacity
+          style={{ alignItems: 'center', justifyContent: 'flex-end' }}
+          onPress={() => navigation.navigate('Chat', { name: 'Jane' })}
+        >
+          <Icon reverse name='comment' size={65} type='ionicon' color='blue' />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        style={{ alignItems: "center", justifyContent: "flex-end" }}
-        onPress={() => navigation.navigate("Chat")}
-      >
-        <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
-      </TouchableOpacity>
     </View>
   );
 }
@@ -125,7 +142,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   idRow: {
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingLeft: 10,
     paddingTop: 10,
   },
@@ -135,29 +152,36 @@ const styles = StyleSheet.create({
   },
   divider: {
     height: 2,
-    backgroundColor: "black",
+    backgroundColor: 'black',
+  },
+  bottom: {
+    marginBottom: 20,
   },
   imageRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignSelf: "flex-end",
+    flex: 3,
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   imageView: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     margin: 10,
-    borderWidth: 5,
-    borderColor: "black",
-    alignSelf: "center",
+    borderWidth: 3,
+    borderColor: 'black',
+    alignSelf: 'center',
   },
   divider: {
     height: 3,
-    backgroundColor: "black",
+    backgroundColor: 'black',
   },
   upload: {
-    alignSelf: "center",
+    alignSelf: 'center',
     padding: 10,
-    fontSize: 30,
+    fontSize: 25,
+  },
+  account: {
+    fontSize: 16,
   },
 });

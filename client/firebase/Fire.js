@@ -42,9 +42,13 @@ class Fire {
     return firebase.database().ref('messages');
   }
 
+  get timestamp() {
+    return firebase.database.ServerValue.TIMESTAMP;
+  }
+
   // parse message and format correctly for Gifted Chat
   parse = (message) => {
-    const { user, text, timestamp } = message.val(); // json representation of the message
+    const { user, text, timestamp, image } = message.val(); // json representation of the message
     // Unique id created from the database
     const { key: _id } = message;
     const createdAt = new Date(timestamp);
@@ -53,18 +57,23 @@ class Fire {
       createdAt,
       text,
       user,
+      image,
     };
   };
 
   on = (callback) => this.database.on('child_added', (snapshot) => callback(this.parse(snapshot)));
 
-  // send the message to the Backend
+  // send the message to the Backend, Firebase work
   send = (messages) => {
+    console.log(messages);
+    console.log('SENDTEST');
     messages.forEach((item) => {
       const message = {
         text: item.text,
         timestamp: firebase.database.ServerValue.TIMESTAMP,
         user: item.user,
+        image: item.image || '',
+        // url passed in by react native image picker
       };
       this.database.push(message);
     });
