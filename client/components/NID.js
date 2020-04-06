@@ -43,8 +43,7 @@ export default function NID({ navigation }) {
 
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}> Nick</Text>
-
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
         </View>
 
         <View style={{ alignSelf: 'center' }}>
@@ -55,7 +54,7 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'flex-end', paddingLeft: 30 }}
+            style={{ justifyContent: 'center', paddingLeft: 30 }}
           />
         </View>
       </TouchableOpacity>
@@ -86,7 +85,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Henry Smith</Text>
 
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
         </View>
 
         <View style={{ alignSelf: 'center' }}>
@@ -126,7 +125,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Stacy Wayne</Text>
 
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
         </View>
 
         <View style={{ alignSelf: 'center' }}>
@@ -166,7 +165,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Roger Davis</Text>
 
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
         </View>
 
         <View style={{ alignSelf: 'center' }}>
@@ -208,7 +207,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Amy Yam</Text>
 
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
         </View>
 
         <View style={{ alignSelf: 'center' }}>
@@ -219,7 +218,7 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 30 }}
+            style={{ justifyContent: 'center', paddingLeft: 50 }}
           />
         </View>
       </TouchableOpacity>
@@ -248,7 +247,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Janice Lema</Text>
 
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
         </View>
 
         <Rating
@@ -286,7 +285,11 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Stephen Chia</Text>
 
-          <Badge value={<Text style={{ padding: 20 }}>Active</Text>} status='success' />
+          <Badge
+            containerStyle={styles.badge}
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+          />
         </View>
 
         <View style={{ alignSelf: 'center' }}>
@@ -343,5 +346,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 20,
     paddingLeft: 10,
+  },
+  active: {
+    padding: 30,
+    textAlign: 'center',
+    marginBottom: 15,
   },
 });
