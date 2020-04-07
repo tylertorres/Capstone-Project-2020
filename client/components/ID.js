@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
   ImageStore,
+  SafeAreaView,
 } from "react-native";
 //import { GoogleSignin, GoogleSigninButton, statusCodes} from 'react-native-google-signin';
 import { disableExpoCliLogging } from "expo/build/logs/Logs";
@@ -19,7 +20,7 @@ export default function ID({ route, navigation }) {
   const { name } = route.params;
   const { uri } = route.params;
   const { id } = route.params;
-  const empty = <Text>""</Text>;
+  const empty = null;
   const type = id == "NID" ? true : false;
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
   const button = (
@@ -30,7 +31,7 @@ export default function ID({ route, navigation }) {
       }
       title="Connect"
       TouchableComponent={TouchableOpacity}
-      titleStyle={{ paddingLeft: 10, alignSelf: "flex-end" }}
+      titleStyle={{ paddingLeft: 10 }}
       buttonStyle={{ backgroundColor: "red" }}
     />
   );
@@ -45,22 +46,35 @@ export default function ID({ route, navigation }) {
             uri: uri,
           }}
         />
-        <View style={{ alignSelf: "center" }}>
-          <Text style={styles.designerInfo}>{name}</Text>
-        </View>
+
+        <Text style={styles.designerInfo}>{name}</Text>
 
         <View
           style={{
             alignSelf: "center",
-            paddingLeft: 100,
           }}
         >
           {type ? button : empty}
         </View>
       </View>
-      <View style={{ paddingTop: 5 }}>
-        <Divider style={styles.divider} />
+
+      <Divider style={styles.divider} />
+
+      <View style={styles.idIcons}>
+        <TouchableOpacity>
+          <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
+        </TouchableOpacity>
       </View>
+
+      <Divider style={styles.divider} />
       <View style={styles.imageRow}>
         <TouchableOpacity>
           <Image
@@ -111,12 +125,23 @@ export default function ID({ route, navigation }) {
       <View style={{ paddingTop: 5 }}>
         <Divider style={styles.divider} />
       </View>
-      <TouchableOpacity
-        style={{ alignItems: "center", justifyContent: "flex-end" }}
-        onPress={() => navigation.navigate("Chat")}
-      >
-        <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
-      </TouchableOpacity>
+
+      <View style={styles.idRow}>
+        <TouchableOpacity>
+          <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{ alignItems: "center" }}
+          onPress={() => navigation.navigate("Chat")}
+        >
+          <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Icon reverse name="comment" size={65} type="ionicon" color="blue" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -124,15 +149,15 @@ export default function ID({ route, navigation }) {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
+    justifyContent: "space-evenly",
   },
   idRow: {
     flexDirection: "row",
-    paddingLeft: 10,
-    paddingTop: 10,
+    justifyContent: "space-around",
   },
   designerInfo: {
     fontSize: 20,
-    paddingLeft: 10,
+    alignSelf: "center",
   },
   divider: {
     height: 2,
@@ -160,5 +185,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     padding: 10,
     fontSize: 30,
+  },
+  idIcons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
