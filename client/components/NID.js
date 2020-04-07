@@ -1,6 +1,7 @@
 import React, { Component, useEffect } from 'react';
-import { Divider, Avatar, Rating, Badge } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Divider, Avatar, Rating, Badge, Icon } from 'react-native-elements';
+//import Icon from 'react-native-vector-icons/FontAwesome';
+
 import {
   StyleSheet,
   View,
@@ -12,18 +13,25 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+// @ticket#1 Grabbing designers
+// UseEffect hook and grab designers from the database
+// Going to need
 
 const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
 
 export default function NID({ navigation }) {
   return (
     <View style={styles.designers}>
-      <Text style={styles.findID}> Find a Designer </Text>
+      <SafeAreaView>
+        <Text style={styles.findID}> Find a Designer </Text>
+      </SafeAreaView>
 
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Nick',
@@ -43,10 +51,15 @@ export default function NID({ navigation }) {
 
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}> Nick</Text>
-          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
+
+          <Badge
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+            badgeStyle={{ padding: 10 }}
+          />
         </View>
 
-        <View style={{ alignSelf: 'center' }}>
+        <View style={styles.rating}>
           <Rating
             type='custom'
             imageSize={35}
@@ -54,7 +67,6 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 30 }}
           />
         </View>
       </TouchableOpacity>
@@ -62,7 +74,7 @@ export default function NID({ navigation }) {
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Henry Smith',
@@ -85,10 +97,14 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Henry Smith</Text>
 
-          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
+          <Badge
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+            badgeStyle={{ padding: 10 }}
+          />
         </View>
 
-        <View style={{ alignSelf: 'center' }}>
+        <View style={styles.rating}>
           <Rating
             type='custom'
             imageSize={35}
@@ -96,7 +112,6 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 30 }}
           />
         </View>
       </TouchableOpacity>
@@ -104,7 +119,7 @@ export default function NID({ navigation }) {
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Stacy Wayne',
@@ -125,10 +140,14 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Stacy Wayne</Text>
 
-          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
+          <Badge
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+            badgeStyle={{ padding: 10 }}
+          />
         </View>
 
-        <View style={{ alignSelf: 'center' }}>
+        <View style={styles.rating}>
           <Rating
             type='custom'
             imageSize={35}
@@ -136,7 +155,6 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 30 }}
           />
         </View>
       </TouchableOpacity>
@@ -144,7 +162,7 @@ export default function NID({ navigation }) {
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Roger Davis',
@@ -165,10 +183,14 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Roger Davis</Text>
 
-          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
+          <Badge
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+            badgeStyle={{ padding: 10 }}
+          />
         </View>
 
-        <View style={{ alignSelf: 'center' }}>
+        <View style={styles.rating}>
           <Rating
             type='custom'
             imageSize={35}
@@ -176,7 +198,6 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 30 }}
           />
         </View>
       </TouchableOpacity>
@@ -184,7 +205,7 @@ export default function NID({ navigation }) {
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Amy Yam',
@@ -207,10 +228,14 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Amy Yam</Text>
 
-          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
+          <Badge
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+            badgeStyle={{ padding: 10 }}
+          />
         </View>
 
-        <View style={{ alignSelf: 'center' }}>
+        <View style={styles.rating}>
           <Rating
             type='custom'
             imageSize={35}
@@ -218,7 +243,6 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 50 }}
           />
         </View>
       </TouchableOpacity>
@@ -226,7 +250,7 @@ export default function NID({ navigation }) {
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Janice Lema',
@@ -247,24 +271,29 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Janice Lema</Text>
 
-          <Badge value={<Text style={styles.active}>Active</Text>} status='success' />
+          <Badge
+            value={<Text style={styles.active}>Active</Text>}
+            status='success'
+            badgeStyle={{ padding: 10 }}
+          />
         </View>
 
-        <Rating
-          type='custom'
-          imageSize={35}
-          ratingColor='#3498db'
-          ratingBackgroundColor='transparent'
-          readonly
-          startingValue={2}
-          style={{ justifyContent: 'center', paddingLeft: 30 }}
-        />
+        <View style={styles.rating}>
+          <Rating
+            type='custom'
+            imageSize={35}
+            ratingColor='#3498db'
+            ratingBackgroundColor='transparent'
+            readonly
+            startingValue={2}
+          />
+        </View>
       </TouchableOpacity>
 
       <Divider style={styles.divider} />
 
       <TouchableOpacity
-        style={{ flexDirection: 'row' }}
+        style={styles.designerNavigation}
         onPress={() =>
           navigation.navigate('ID', {
             name: 'Stephen Chia',
@@ -286,13 +315,13 @@ export default function NID({ navigation }) {
           <Text style={styles.designerName}>Stephen Chia</Text>
 
           <Badge
-            containerStyle={styles.badge}
             value={<Text style={styles.active}>Active</Text>}
             status='success'
+            badgeStyle={{ padding: 10 }}
           />
         </View>
 
-        <View style={{ alignSelf: 'center' }}>
+        <View style={styles.rating}>
           <Rating
             type='custom'
             imageSize={35}
@@ -300,19 +329,28 @@ export default function NID({ navigation }) {
             ratingBackgroundColor='transparent'
             readonly
             startingValue={3}
-            style={{ justifyContent: 'center', paddingLeft: 30 }}
           />
         </View>
       </TouchableOpacity>
 
       <Divider style={styles.divider} />
 
-      <TouchableOpacity
-        style={{ alignSelf: 'center' }}
-        onPress={() => navigation.navigate('Chat', { name: 'Inbox' })}
-      >
-        <Icon reverse name='comment' size={65} type='ionicon' color='blue' />
-      </TouchableOpacity>
+      <SafeAreaView style={styles.bottomIcons}>
+        <TouchableOpacity>
+          <Icon name='account-multiple' type='material-community' size={50} />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.designerNavigation}
+          onPress={() => navigation.navigate('Chat')}
+        >
+          <Icon name='sc-telegram' size={50} type='evilicon' />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Icon name='flare' size={50} type='material-community' />
+        </TouchableOpacity>
+      </SafeAreaView>
     </View>
   );
 }
@@ -321,8 +359,8 @@ const styles = StyleSheet.create({
   findID: {
     fontFamily: FONT,
     fontSize: 25,
-    textAlign: 'center',
-    padding: 20,
+    alignSelf: 'center',
+    paddingTop: 10,
   },
   imagebutton: {
     borderWidth: 3,
@@ -344,12 +382,22 @@ const styles = StyleSheet.create({
   },
   designerName: {
     alignSelf: 'center',
-    fontSize: 20,
-    paddingLeft: 10,
+    fontSize: 15,
+  },
+  rating: {
+    alignSelf: 'center',
+  },
+  designerNavigation: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  bottomIcons: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   active: {
-    padding: 30,
-    textAlign: 'center',
+    padding: 15,
     marginBottom: 15,
+    color: '#fff',
   },
 });
