@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Avatar, Button, Divider } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {
@@ -15,6 +15,7 @@ import {
 import { disableExpoCliLogging } from "expo/build/logs/Logs";
 
 export default function ID({ route, navigation }) {
+  const [modalVisible, setModalVisible] = useState(false);
   const { name } = route.params;
   const { uri } = route.params;
   const { id } = route.params;
