@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import { GiftedChat } from 'react-native-gifted-chat'; // 0.3.0
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
+import { GiftedChat } from 'react-native-gifted-chat';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import Fire from '../firebase/Fire';
@@ -20,16 +27,16 @@ class Chat extends Component {
 
   get user() {
     return {
-      name: 'TI',
+      name: 'N',
       _id: Fire.shared.uid,
     };
   }
 
   componentDidMount() {
-    Fire.shared.on((message) => {
+    Fire.shared.on(message => {
       //console.log(message);
       // waits for the async operation to complete before persisting new data
-      this.setState((previousState) => ({
+      this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),
       }));
     });
@@ -39,18 +46,18 @@ class Chat extends Component {
     Fire.shared.off();
   }
 
-  setImage = (image) => {
+  setImage = image => {
     this.setState({
       image: image,
     });
   };
 
   onImageSubmission = () => {
-    ImagePicker.openPicker({}).then((image) => this.setImage(image));
+    ImagePicker.openPicker({}).then(image => this.setImage(image));
   };
 
-  onSend = (messages) => {
-    messages.forEach((item) => {
+  onSend = messages => {
+    messages.forEach(item => {
       const message = {
         text: item.text,
         timestamp: Fire.shared.timestamp,
@@ -70,18 +77,29 @@ class Chat extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.upload}>
-          <TouchableOpacity style={styles.button} onPress={this.onImageSubmission}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={this.onImageSubmission}
+          >
             <Text>Upload</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={this.onImageSubmission}
+          >
+            <Text>Review</Text>
           </TouchableOpacity>
         </View>
         <GiftedChat
           messages={this.state.messages}
-          onSend={(messages) => this.onSend(messages)}
+          onSend={messages => this.onSend(messages)}
           user={this.user}
         />
         {this.state.image && (
           <View style={styles.preview}>
-            <Image source={{ uri: this.state.image.path, width: 50, height: 50 }} />
+            <Image
+              source={{ uri: this.state.image.path, width: 50, height: 50 }}
+            />
           </View>
         )}
       </View>
@@ -92,13 +110,15 @@ class Chat extends Component {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   upload: {
-    display: 'flex',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
+    flexDirection: 'row',
   },
   button: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     padding: 10,
+    width: '50%',
   },
   img: {
     height: 20,

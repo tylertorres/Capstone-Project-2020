@@ -26,17 +26,28 @@ export default function ID({ route, navigation }) {
   const button = (
     <Button
       onPress={() => navigation.navigate('Chat')}
-      icon={<Icon name='email-plus-outline' size={30} type='material-community' />}
+      icon={
+        <Icon name='email-plus-outline' size={30} type='material-community' />
+      }
       title='Connect'
       TouchableComponent={TouchableOpacity}
       titleStyle={{ paddingLeft: 10, color: 'black' }}
-      buttonStyle={{ backgroundColor: 'transparent', borderColor: 'black', borderWidth: 2 }}
+      buttonStyle={{
+        backgroundColor: 'transparent',
+        borderColor: 'black',
+        borderWidth: 2,
+      }}
     />
   );
   return (
     <View style={styles.mainView}>
       <View style={styles.idRow}>
-        <Avatar size='large' containerStyle={{ borderWidth: 3 }} rounded source={{ uri: uri }} />
+        <Avatar
+          size='large'
+          containerStyle={{ borderWidth: 3 }}
+          rounded
+          source={{ uri: uri }}
+        />
 
         <Text style={styles.designerInfo}>{name}</Text>
 
@@ -53,7 +64,11 @@ export default function ID({ route, navigation }) {
 
       <View style={styles.idIcons}>
         <TouchableOpacity>
-          <Icon name='briefcase-search-outline' size={35} type='material-community' />
+          <Icon
+            name='briefcase-search-outline'
+            size={35}
+            type='material-community'
+          />
         </TouchableOpacity>
 
         <TouchableOpacity>
@@ -61,7 +76,11 @@ export default function ID({ route, navigation }) {
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Icon name='comment-text-multiple-outline' size={35} type='material-community' />
+          <Icon
+            name='comment-text-multiple-outline'
+            size={35}
+            type='material-community'
+          />
         </TouchableOpacity>
       </View>
 
@@ -119,7 +138,7 @@ export default function ID({ route, navigation }) {
       <Divider style={styles.divider} />
 
       <SafeAreaView style={styles.bottomIcons}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('NID')}>
           <Icon name='account-multiple' type='material-community' size={50} />
         </TouchableOpacity>
 
@@ -165,7 +184,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     margin: 10,
-    borderWidth: 5,
+    borderWidth: 2,
     borderColor: 'black',
     alignSelf: 'center',
   },

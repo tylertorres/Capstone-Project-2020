@@ -21,9 +21,10 @@ class Fire {
     }
   };
 
-  observeAuth = () => firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
+  observeAuth = () =>
+    firebase.auth().onAuthStateChanged(this.onAuthStateChanged);
 
-  onAuthStateChanged = (user) => {
+  onAuthStateChanged = user => {
     if (!user) {
       try {
         firebase.auth().signInAnonymously();
@@ -47,7 +48,7 @@ class Fire {
   }
 
   // parse message and format correctly for Gifted Chat
-  parse = (message) => {
+  parse = message => {
     const { user, text, timestamp, image } = message.val(); // json representation of the message
     // Unique id created from the database
     const { key: _id } = message;
@@ -61,13 +62,12 @@ class Fire {
     };
   };
 
-  on = (callback) => this.database.on('child_added', (snapshot) => callback(this.parse(snapshot)));
+  on = callback =>
+    this.database.on('child_added', snapshot => callback(this.parse(snapshot)));
 
   // send the message to the Backend, Firebase work
-  send = (messages) => {
-    console.log(messages);
-    console.log('SENDTEST');
-    messages.forEach((item) => {
+  send = (messages, image) => {
+    messages.forEach(item => {
       const message = {
         text: item.text,
         timestamp: firebase.database.ServerValue.TIMESTAMP,
