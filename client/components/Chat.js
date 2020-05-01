@@ -21,6 +21,7 @@ class Chat extends Component {
   componentDidMount() {
     const { route, navigation } = this.props;
     const { name } = route.params;
+    console.log(this.props.navigation);
 
     navigation.setOptions({
       headerRight: () => (
@@ -95,6 +96,8 @@ class Chat extends Component {
   };
 
   reviewAlert = name => {
+    const { navigation, route } = this.props;
+    const { key } = route.params;
     Alert.alert(`Leave a Review for ${name}`, '', [
       {
         text: 'Cancel',
@@ -103,7 +106,7 @@ class Chat extends Component {
       },
       {
         text: 'Review',
-        onPress: () => this.props.navigation.navigate('Review', { name }),
+        onPress: () => navigation.navigate('Review', { name, key }),
       },
     ]);
   };

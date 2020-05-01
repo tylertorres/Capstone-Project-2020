@@ -11,6 +11,7 @@ import ID from './components/ID';
 import profileSetup from './components/profileSetup';
 import Chat from './components/Chat';
 import Request from './components/Request';
+import Review from './components/Review';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name={'profileSetup'} component={profileSetup} options={{ headerShown: false }} />
         <Stack.Screen name={'Chat'} component={Chat} options={({ route }) => ({ title: route.params.name })} />
         <Stack.Screen name={'Request'} component={Request} />
+        <Stack.Screen name={'Review'} component={Review} />
       </Stack.Navigator>
     </NavigationContainer>
   );

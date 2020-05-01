@@ -1,14 +1,15 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { TextInput, TouchableOpacity, View, StyleSheet, Text, Image, ActivityIndicator } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import Fire from '../firebase/Fire';
 
 const Request = ({ route, navigation }) => {
-  const [text, setText] = useState(null);
+  const [text, setText] = useState('');
   const [images, setImages] = useState(null);
   const [indicator, setIndicator] = useState(false);
 
   const { name } = route.params;
+  const { key } = route;
 
   const onImageSubmission = () => {
     ImagePicker.openPicker({ multiple: true, maxFiles: 4 })
@@ -54,7 +55,7 @@ const Request = ({ route, navigation }) => {
     Fire.shared.send(msgArray);
     setTimeout(() => {
       setIndicator(false);
-      navigation.navigate('Chat', { name });
+      navigation.navigate('Chat', { name, key });
     }, 3000);
   };
 
@@ -89,7 +90,7 @@ const Request = ({ route, navigation }) => {
           ))}
         </View>
       )}
-      {text && images && (
+      {text != '' && images && (
         <View style={styles.submit}>
           <TouchableOpacity style={styles.infoButton} onPress={sendRequest}>
             {indicator ? (
