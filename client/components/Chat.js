@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { IconButton } from 'react-native-paper';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import Fire from '../firebase/Fire';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -18,6 +19,11 @@ class Chat extends Component {
   }
 
   componentDidMount() {
+    const { navigation } = this.props;
+    navigation.setOptions({
+      headerRight: () => <IconButton icon='camera' color='#007FFF' size={25} onPress={this.onImageSubmission} />,
+    });
+
     Fire.shared.on(message => {
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),
@@ -103,7 +109,7 @@ class Chat extends Component {
           <View style={styles.preview}>
             {this.state.images.map(image => (
               <Image
-                key={image._id}
+                key={image.id}
                 source={{
                   uri: image.path,
                   width: 75,
@@ -141,6 +147,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     padding: 15,
+  },
+  addImg: {
+    color: 'cyan',
+    height: 10,
+    width: 10,
+    backgroundColor: 'blue',
   },
 });
 
