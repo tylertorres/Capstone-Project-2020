@@ -61,7 +61,7 @@ export default function Review({ route, navigation }) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Icon
-              name="navigation"
+              name="arrow-left-bold"
               size={50}
               type="material-community"
               onPress={() => {
@@ -81,14 +81,14 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Raven Jane</Text>
+            <Text style={styles.size}>Great communication when I ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
@@ -106,14 +106,39 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Shanice Arroyo</Text>
+            <Text style={styles.size}>Helped me at every step of the ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={4}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Kevin Weir</Text>
+            <Text style={styles.size}>Provided some great advice ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
@@ -131,14 +156,14 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Freja Britton</Text>
+            <Text style={styles.size}>Was very clear in explaining ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
@@ -156,14 +181,39 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Isra Povey</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={5}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Shereen Ryder</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
@@ -181,14 +231,164 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Mahdi Coleman</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={4}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Kaime Gonzalez</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={5}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Freyja Kim</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={2}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Tammy Macgregor</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={4}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Ilyas Barber</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={2}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Robin James</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
+              ratingColor="#3498db"
+              ratingBackgroundColor="transparent"
+              readonly
+              startingValue={5}
+            />
+          </View>
+        </TouchableOpacity>
+
+        <Divider style={styles.dividerThin} />
+
+        <TouchableOpacity
+          style={styles.ratingRow}
+          onPress={() => {
+            setModal(true);
+          }}
+        >
+          <View style={styles.nameAndRating}>
+            <Text style={styles.name}>Bruce Kent</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+          </View>
+
+          <View style={styles.rating}>
+            <Rating
+              type="custom"
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
@@ -206,18 +406,18 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Parker Peter</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
-              startingValue={3}
+              startingValue={4}
             />
           </View>
         </TouchableOpacity>
@@ -231,214 +431,14 @@ export default function Review({ route, navigation }) {
           }}
         >
           <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
+            <Text style={styles.name}>Mary Jane</Text>
+            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
           </View>
 
           <View style={styles.rating}>
             <Rating
               type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
-              readonly
-              startingValue={3}
-            />
-          </View>
-        </TouchableOpacity>
-
-        <Divider style={styles.dividerThin} />
-
-        <TouchableOpacity
-          style={styles.ratingRow}
-          onPress={() => {
-            setModal(true);
-          }}
-        >
-          <View style={styles.nameAndRating}>
-            <Text>Raven Jane</Text>
-            <Text>Lorem ipsum reviews this was a </Text>
-          </View>
-
-          <View style={styles.rating}>
-            <Rating
-              type="custom"
-              imageSize={35}
+              imageSize={30}
               ratingColor="#3498db"
               ratingBackgroundColor="transparent"
               readonly
@@ -519,15 +519,13 @@ const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
     marginTop: 22,
   },
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
+    borderRadius: 30,
+    padding: 90,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -544,5 +542,15 @@ const styles = StyleSheet.create({
   designerNavigation: {
     flexDirection: "row",
     justifyContent: "space-around",
+  },
+  size: {
+    fontSize: 15,
+    color: "red",
+    paddingLeft: 10,
+    paddingTop: 5,
+    paddingBottom: 5,
+  },
+  name: {
+    fontSize: 20,
   },
 });
