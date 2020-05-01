@@ -12,11 +12,28 @@ import profileSetup from './components/profileSetup';
 import Chat from './components/Chat';
 import Request from './components/Request';
 import Review from './components/Review';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Home!</Text>
+    </View>
+  );
+}
 
 export default function App() {
   return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name='Home' component={HomeScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+  /* return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
@@ -28,5 +45,5 @@ export default function App() {
         <Stack.Screen name={'Review'} component={Review} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  ); */
 }
