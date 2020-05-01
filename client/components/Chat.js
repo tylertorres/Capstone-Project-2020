@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
 import { IconButton } from 'react-native-paper';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import Fire from '../firebase/Fire';
@@ -19,9 +19,13 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-    const { navigation } = this.props;
+    const { route, navigation } = this.props;
+    const { name } = route.params;
+
     navigation.setOptions({
-      headerRight: () => <IconButton icon='camera' color='#007FFF' size={25} onPress={this.onImageSubmission} />,
+      headerRight: () => (
+        <IconButton icon='account-edit' color='#007FFF' size={25} onPress={() => this.reviewAlert(name)} />
+      ),
     });
 
     Fire.shared.on(message => {
@@ -36,9 +40,13 @@ class Chat extends Component {
   }
 
   onImageSubmission = () => {
-    ImagePicker.openPicker({ multiple: true, maxFiles: 3 }).then(images => {
-      this.setState({ images });
-    });
+    ImagePicker.openPicker({ multiple: true, maxFiles: 3 })
+      .then(images => {
+        this.setState({ images });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   onSend = messages => {
@@ -86,15 +94,26 @@ class Chat extends Component {
     );
   };
 
+  reviewAlert = name => {
+    Alert.alert(`Leave a Review for ${name}`, '', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'Review',
+        onPress: () => this.props.navigation.navigate('Review', { name }),
+      },
+    ]);
+  };
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.upload}>
           <TouchableOpacity style={styles.button} onPress={this.onImageSubmission}>
             <Text>Upload</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={this.onImageSubmission}>
-            <Text>Review</Text>
           </TouchableOpacity>
         </View>
         <GiftedChat
@@ -136,7 +155,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     padding: 10,
-    width: '50%',
+    width: '100%',
   },
   img: {
     borderRadius: 100,

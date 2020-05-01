@@ -54,7 +54,7 @@ const Request = ({ route, navigation }) => {
     Fire.shared.send(msgArray);
     setTimeout(() => {
       setIndicator(false);
-      navigation.navigate('Chat', { name: 'Test' });
+      navigation.navigate('Chat', { name });
     }, 3000);
   };
 
