@@ -13,6 +13,8 @@ import Chat from './components/Chat';
 import Reviews from './components/Reviews';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Request from './components/Request';
+import Review from './components/Review';
+import Test from './components/test';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,12 +37,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen name={'test'} component={Test} /> */}
         <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
         <Stack.Screen name={'NID'} component={NID} options={{ headerShown: false }} />
         <Stack.Screen name={'ID'} component={ID} options={{ title: 'Profile' }} />
         <Stack.Screen name={'profileSetup'} component={profileSetup} options={{ headerShown: false }} />
         <Stack.Screen name={'Chat'} component={Chat} options={({ route }) => ({ title: route.params.name })} />
         <Stack.Screen name={'Reviews'} component={Reviews} />
+        <Stack.Screen name={'Request'} component={Request} />
+        <Stack.Screen name='Review' component={Review} />
       </Stack.Navigator>
     </NavigationContainer>
   );

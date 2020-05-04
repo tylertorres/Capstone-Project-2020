@@ -25,7 +25,7 @@ export default function ID({ route, navigation }) {
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
   const button = (
     <Button
-      onPress={() => navigation.navigate('Request')}
+      onPress={() => navigation.navigate('Request', { name })}
       icon={<Icon name='email-plus-outline' size={30} type='material-community' />}
       title='Connect'
       TouchableComponent={TouchableOpacity}

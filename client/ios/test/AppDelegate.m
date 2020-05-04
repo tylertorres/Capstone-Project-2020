@@ -16,18 +16,22 @@
 
 //In the tutorial they import the following insted of what was provided in the firebase console
 //#import <UIKit/UIKit.h>
-//#import <Firebase.h>
+#import <Firebase.h>
 
 //In the firebase console the following two import statements have @ insted of #
 //#import UIKit; 
 //#import Firebase;
 
+@import UIKit;
+//@import Firebase;
+
 @implementation AppDelegate
 
 @synthesize window = _window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  [FIRApp configure];
+  
   self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:@"test" initialProperties:nil];
@@ -38,7 +42,6 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  //[FIRApp configure];
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
