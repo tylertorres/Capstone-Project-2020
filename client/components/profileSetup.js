@@ -1,16 +1,7 @@
 import React, { Component, useState } from 'react';
 import { Avatar, Button, Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  TextInput,
-  TouchableOpacity,
-  Picker,
-} from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground, TextInput, TouchableOpacity, Picker } from 'react-native';
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 import axios from 'axios';
 
@@ -25,20 +16,14 @@ export default function profileSetup({ navigation }) {
 
   function combined() {
     backend();
-    selectedValue === 'id'
-      ? navigation.navigate('NID')
-      : navigation.navigate('ID', { name: name, id: 'ID' });
+    selectedValue === 'id' ? navigation.navigate('Main') : navigation.navigate('ID', { name: name, id: 'ID' });
   }
 
   return (
     <View style={styles.mainView}>
       <Text style={styles.enterName}>Enter Name</Text>
 
-      <TextInput
-        style={styles.nameField}
-        placeholder='e.g John Doe'
-        onChangeText={(val) => setName(val)}
-      />
+      <TextInput style={styles.nameField} placeholder='e.g John Doe' onChangeText={val => setName(val)} />
 
       <Text style={styles.enterName}>Enter email</Text>
 
@@ -46,12 +31,10 @@ export default function profileSetup({ navigation }) {
         style={styles.nameField}
         placeholder='e.g example@gmail.com'
         keyboardType='email-address'
-        onChangeText={(val) => setEmail(val)}
+        onChangeText={val => setEmail(val)}
       />
 
-      <Text style={styles.pickerText}>
-        Please choose who you want to continue as
-      </Text>
+      <Text style={styles.pickerText}>Please choose who you want to continue as</Text>
 
       <View style={styles.pickerView}>
         <Picker
@@ -63,10 +46,7 @@ export default function profileSetup({ navigation }) {
           <Picker.Item label='User' value='id' />
           <Picker.Item label='Designer' value='nid' />
         </Picker>
-        <TouchableOpacity
-          style={styles.continueButton}
-          onPress={() => combined()}
-        >
+        <TouchableOpacity style={styles.continueButton} onPress={() => combined()}>
           <Text style={styles.continueText}>Continue</Text>
         </TouchableOpacity>
       </View>
