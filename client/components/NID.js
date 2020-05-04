@@ -2,22 +2,9 @@ import React, { Component, useEffect } from 'react';
 import { Divider, Avatar, Rating, Badge, Icon } from 'react-native-elements';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  TextInput,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Text, Image, ImageBackground, TextInput, StatusBar, TouchableOpacity } from 'react-native';
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-// @ticket#1 Grabbing designers
-// UseEffect hook and grab designers from the database
-// Going to need
 
 const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
 
@@ -52,11 +39,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}> Nick</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -97,11 +80,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Henry Smith</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -140,11 +119,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Stacy Wayne</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -183,11 +158,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Roger Davis</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -228,11 +199,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Amy Yam</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -271,11 +238,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Janice Lema</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -314,11 +277,7 @@ export default function NID({ navigation }) {
         <View style={{ alignSelf: 'center' }}>
           <Text style={styles.designerName}>Stephen Chia</Text>
 
-          <Badge
-            value={<Text style={styles.active}>Active</Text>}
-            status='success'
-            badgeStyle={{ padding: 10 }}
-          />
+          <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
 
         <View style={styles.rating}>
@@ -340,10 +299,7 @@ export default function NID({ navigation }) {
           <Icon name='account-multiple' type='material-community' size={50} />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.designerNavigation}
-          onPress={() => navigation.navigate('Chat')}
-        >
+        <TouchableOpacity style={styles.designerNavigation} onPress={() => navigation.navigate('Chat')}>
           <Icon name='sc-telegram' size={50} type='evilicon' />
         </TouchableOpacity>
 

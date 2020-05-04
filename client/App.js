@@ -13,6 +13,21 @@ import Chat from "./components/Chat";
 import Reviews from "./components/Reviews";
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+/* function HomeScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name={'NID'} component={NID} options={{ headerShown: false }} />
+      <Stack.Screen name={'ID'} component={ID} options={{ title: 'Profile' }} />
+      <Stack.Screen name={'profileSetup'} component={profileSetup} options={{ headerShown: false }} />
+      <Stack.Screen name={'Chat'} component={Chat} options={({ route }) => ({ title: route.params.name })} />
+      <Stack.Screen name={'Request'} component={Request} />
+      <Stack.Screen name={'Review'} component={Review} />
+    </Stack.Navigator>
+  ); */
+/* } */
 
 export default function App() {
   return (
@@ -43,4 +58,46 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
+}
+
+const MainStack = createStackNavigator();
+
+function MainScreens() {
+  return (
+    <MainStack.Navigator>
+      <MainStack.Screen name='NID' component={NID} options={{ headerShown: false }} />
+      <MainStack.Screen name='ID' component={ID} />
+      <MainStack.Screen name={'Request'} component={Request} />
+      <MainStack.Screen name={'Review'} component={Review} />
+      <Stack.Screen name={'Chat'} component={Chat} options={({ route }) => ({ title: route.params.name })} />
+    </MainStack.Navigator>
+  );
+}
+
+function MainTabs() {
+  return (
+    <Tab.Navigator tabBarOptions={{ activeTintColor: 'teal' }}>
+      <Tab.Screen
+        name='Connect'
+        component={MainScreens}
+        options={{
+          tabBarIcon: (focused, color, size) => <IconButton icon='account-group' color={color} size={size} />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+
+  /* return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name={'NID'} component={NID} options={{ headerShown: false }} />
+        <Stack.Screen name={'ID'} component={ID} options={{ title: 'Profile' }} />
+        <Stack.Screen name={'profileSetup'} component={profileSetup} options={{ headerShown: false }} />
+        <Stack.Screen name={'Chat'} component={Chat} options={({ route }) => ({ title: route.params.name })} />
+        <Stack.Screen name={'Request'} component={Request} />
+        <Stack.Screen name={'Review'} component={Review} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  ); */
 }

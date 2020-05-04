@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
-import { View, Text, Button, SafeAreaView, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
+import { IconButton } from 'react-native-paper';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import Fire from '../firebase/Fire';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -18,6 +19,16 @@ class Chat extends Component {
   }
 
   componentDidMount() {
+    const { route, navigation } = this.props;
+    const { name } = route.params;
+    console.log(this.props.navigation);
+
+    navigation.setOptions({
+      headerRight: () => (
+        <IconButton icon='account-edit' color='#007FFF' size={25} onPress={() => this.reviewAlert(name)} />
+      ),
+    });
+
     Fire.shared.on(message => {
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),
@@ -30,9 +41,13 @@ class Chat extends Component {
   }
 
   onImageSubmission = () => {
-    ImagePicker.openPicker({ multiple: true, maxFiles: 3 }).then(images => {
-      this.setState({ images });
-    });
+    ImagePicker.openPicker({ multiple: true, maxFiles: 3 })
+      .then(images => {
+        this.setState({ images });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   onSend = messages => {
@@ -80,15 +95,28 @@ class Chat extends Component {
     );
   };
 
+  reviewAlert = name => {
+    const { navigation, route } = this.props;
+    const { key } = route.params;
+    Alert.alert(`Leave a Review for ${name}`, '', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'Review',
+        onPress: () => navigation.navigate('Review', { name, key }),
+      },
+    ]);
+  };
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.upload}>
           <TouchableOpacity style={styles.button} onPress={this.onImageSubmission}>
             <Text>Upload</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={this.onImageSubmission}>
-            <Text>Review</Text>
           </TouchableOpacity>
         </View>
         <GiftedChat
@@ -103,7 +131,7 @@ class Chat extends Component {
           <View style={styles.preview}>
             {this.state.images.map(image => (
               <Image
-                key={image._id}
+                key={image.id}
                 source={{
                   uri: image.path,
                   width: 75,
@@ -130,7 +158,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
     padding: 10,
-    width: '50%',
+    width: '100%',
   },
   img: {
     borderRadius: 100,
@@ -141,6 +169,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     padding: 15,
+  },
+  addImg: {
+    color: 'cyan',
+    height: 10,
+    width: 10,
+    backgroundColor: 'blue',
   },
 });
 
