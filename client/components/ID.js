@@ -75,6 +75,7 @@ export default function ID({ route, navigation }) {
           <Icon name="account" size={35} type="material-community" />
         </TouchableOpacity>
 
+
         <TouchableOpacity
           onPress={() =>
             navigation.navigate("Reviews", { name: name, uri: uri })
@@ -142,6 +143,7 @@ export default function ID({ route, navigation }) {
       <Divider style={styles.divider} />
 
       <SafeAreaView style={styles.bottomIcons}>
+
         <TouchableOpacity>
           <Icon name="account-multiple" type="material-community" size={50} />
         </TouchableOpacity>
