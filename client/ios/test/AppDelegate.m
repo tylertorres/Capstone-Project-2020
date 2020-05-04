@@ -15,12 +15,12 @@
 #import <UMReactNativeAdapter/UMModuleRegistryAdapter.h>
 
 //In the tutorial they import the following insted of what was provided in the firebase console
-// #import <UIKit/UIKit.h>
-// #import <Firebase.h>
+//#import <UIKit/UIKit.h>
+//#import <Firebase.h>
 
 //In the firebase console the following two import statements have @ insted of #
-#import UIKit; 
-#import Firebase;
+//#import UIKit; 
+//#import Firebase;
 
 @implementation AppDelegate
 
@@ -38,7 +38,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  [FIRApp configure];
+  //[FIRApp configure];
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
 
