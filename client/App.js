@@ -45,7 +45,7 @@ export default function App() {
         <Stack.Screen name={'Chat'} component={Chat} options={({ route }) => ({ title: route.params.name })} />
         <Stack.Screen name={'Reviews'} component={Reviews} />
         <Stack.Screen name={'Request'} component={Request} />
-        <Stack.Screen name='Review' component={Review} />
+        <Stack.Screen name={'Review'} component={Review} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -53,7 +53,6 @@ export default function App() {
 
 /* 
 const MainStack = createStackNavigator();
-
 function MainScreens() {
   return (
     <MainStack.Navigator>
@@ -65,7 +64,6 @@ function MainScreens() {
     </MainStack.Navigator>
   );
 }
-
 function MainTabs() {
   return (
     <Tab.Navigator tabBarOptions={{ activeTintColor: 'teal' }}>

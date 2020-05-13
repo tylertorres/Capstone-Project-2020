@@ -14,9 +14,8 @@ import {
 import { GoogleSigninButton, GoogleSignin, statusCodes } from 'react-native-google-signin';
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 
-const linkToImage = 'https://ksassets.timeincuk.net/wp/uploads/sites/56/2018/06/living-room-wallpaper-ideas-map.jpg';
-
 const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
+const linkToImage = 'https://ksassets.timeincuk.net/wp/uploads/sites/56/2018/06/living-room-wallpaper-ideas-map.jpg';
 
 export default class Login extends Component {
   componentDidMount() {

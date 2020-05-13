@@ -12,7 +12,6 @@ import {
   ImageStore,
   SafeAreaView,
 } from 'react-native';
-//import { GoogleSignin, GoogleSigninButton, statusCodes} from 'react-native-google-signin';
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 
 export default function ID({ route, navigation }) {
@@ -127,7 +126,7 @@ export default function ID({ route, navigation }) {
           <Icon name='account-multiple' type='material-community' size={50} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.designerNavigation} onPress={() => navigation.navigate('Chat')}>
+        <TouchableOpacity style={styles.designerNavigation} onPress={() => navigation.navigate('Chat', { name: name })}>
           <Icon name='sc-telegram' size={50} type='evilicon' />
         </TouchableOpacity>
 
