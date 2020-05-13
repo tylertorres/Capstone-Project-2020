@@ -1,8 +1,17 @@
-import React, { Component, useState, Fragment } from 'react';
-import { Avatar, Button, Divider, Icon, Rating } from 'react-native-elements';
-import { View, StyleSheet, SafeAreaView, Text, TouchableOpacity, Modal, ScrollView } from 'react-native';
+import React, { Component, useState, Fragment } from "react";
+import { Avatar, Button, Divider, Icon, Rating } from "react-native-elements";
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+} from "react-native";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
-const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
+const FONT = Platform.OS == "android" ? "monospace" : "arial";
 
 export default function Review({ route, navigation }) {
   const [modalOpen, setModal] = useState(false);
@@ -40,20 +49,22 @@ export default function Review({ route, navigation }) {
 
       <Divider style={styles.divider} />
 
-      <Modal animationType='fade' visible={modalOpen} transparent>
-        <View style={styles.centeredView}>
+      <Modal animationType="fade" visible={modalOpen} transparent>
+        <TouchableOpacity
+          style={styles.centeredView}
+          onPressOut={() => {
+            setModal(false);
+          }}
+        >
           <View style={styles.modalView}>
-            <Icon
-              name='arrow-left-bold'
-              size={50}
-              type='material-community'
-              onPress={() => {
-                setModal(false);
-              }}
-            />
-            <Text>Hello from the world of the modal</Text>
-          </View>
-        </View>
+            <Text>
+              Great communication when I connected with Janice! She was very
+              nice and she answered all of the questions I had concernig the
+              layout of my apartment.
+            </Text>
+
+         </View>
+        </TouchableOpacity>
       </Modal>
 
       <ScrollView>
@@ -165,7 +176,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Isra Povey</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Was very helpful ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -190,7 +201,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Shereen Ryder</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Answered my questions ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -215,7 +226,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Mahdi Coleman</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Great insight ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -240,7 +251,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Kaime Gonzalez</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Good designer eye ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -265,7 +276,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Freyja Kim</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Master designer ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -290,7 +301,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Tammy Macgregor</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Highly knowledgeable ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -315,7 +326,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Ilyas Barber</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Very nice person ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -340,7 +351,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Robin James</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Quality at a great price ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -365,7 +376,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Bruce Kent</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Highly recommend ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -390,7 +401,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Parker Peter</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>A go to for design questions ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -415,7 +426,7 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.nameAndRating}>
             <Text style={styles.name}>Mary Jane</Text>
-            <Text style={styles.size}>Lorem ipsum reviews this was a ...</Text>
+            <Text style={styles.size}>Very helpful ...</Text>
           </View>
 
           <View style={styles.rating}>
@@ -493,8 +504,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   nameAndRating: {
-    alignSelf: 'center',
-    paddingLeft: 10,
+    alignSelf: "center",
+    //paddingLeft: 10,
   },
   centeredView: {
     flex: 1,
@@ -525,8 +536,9 @@ const styles = StyleSheet.create({
   },
   size: {
     fontSize: 15,
-    color: 'red',
-    paddingLeft: 10,
+
+    color: "red",
+
     paddingTop: 5,
     paddingBottom: 5,
   },
