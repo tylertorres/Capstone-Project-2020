@@ -27,12 +27,7 @@ export default function Review({ route, navigation }) {
       <Divider style={styles.divider} />
 
       <View style={styles.reviewsRow}>
-        <Avatar
-          size="large"
-          containerStyle={{ borderWidth: 3 }}
-          rounded
-          source={{ uri: uri }}
-        />
+        <Avatar size='large' containerStyle={{ borderWidth: 3 }} rounded source={{ uri: uri }} />
 
         <Text style={styles.avatarText}>{name}</Text>
         <Text style={styles.avatarText}>Account</Text>
@@ -42,17 +37,13 @@ export default function Review({ route, navigation }) {
 
       <View style={styles.iconRow}>
         <TouchableOpacity>
-          <Icon name="account" size={35} type="material-community" />
+          <Icon name='account' size={35} type='material-community' />
         </TouchableOpacity>
 
         <View style={styles.verticalDivider}></View>
 
         <TouchableOpacity>
-          <Icon
-            name="comment-text-multiple-outline"
-            size={35}
-            type="material-community"
-          />
+          <Icon name='comment-text-multiple-outline' size={35} type='material-community' />
         </TouchableOpacity>
       </View>
 
@@ -71,7 +62,8 @@ export default function Review({ route, navigation }) {
               nice and she answered all of the questions I had concernig the
               layout of my apartment.
             </Text>
-          </View>
+
+         </View>
         </TouchableOpacity>
       </Modal>
 
@@ -89,10 +81,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={3}
             />
@@ -114,10 +106,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={4}
             />
@@ -139,10 +131,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={3}
             />
@@ -164,10 +156,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={3}
             />
@@ -189,10 +181,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={5}
             />
@@ -214,10 +206,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={3}
             />
@@ -239,10 +231,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={4}
             />
@@ -264,10 +256,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={5}
             />
@@ -289,10 +281,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={2}
             />
@@ -314,10 +306,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={4}
             />
@@ -339,10 +331,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={2}
             />
@@ -364,10 +356,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={5}
             />
@@ -389,10 +381,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={3}
             />
@@ -414,10 +406,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={4}
             />
@@ -439,10 +431,10 @@ export default function Review({ route, navigation }) {
 
           <View style={styles.rating}>
             <Rating
-              type="custom"
+              type='custom'
               imageSize={30}
-              ratingColor="#3498db"
-              ratingBackgroundColor="transparent"
+              ratingColor='#3498db'
+              ratingBackgroundColor='transparent'
               readonly
               startingValue={3}
             />
@@ -454,18 +446,15 @@ export default function Review({ route, navigation }) {
 
       <SafeAreaView style={styles.bottomIcons}>
         <TouchableOpacity>
-          <Icon name="account-multiple" type="material-community" size={50} />
+          <Icon name='account-multiple' type='material-community' size={50} />
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.designerNavigation}
-          onPress={() => navigation.navigate("Chat")}
-        >
-          <Icon name="sc-telegram" size={50} type="evilicon" />
+        <TouchableOpacity style={styles.designerNavigation} onPress={() => navigation.navigate('Chat')}>
+          <Icon name='sc-telegram' size={50} type='evilicon' />
         </TouchableOpacity>
 
         <TouchableOpacity>
-          <Icon name="flare" size={50} type="material-community" />
+          <Icon name='flare' size={50} type='material-community' />
         </TouchableOpacity>
       </SafeAreaView>
     </View>
@@ -475,44 +464,44 @@ export default function Review({ route, navigation }) {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: "white",
-    justifyContent: "space-evenly",
+    backgroundColor: 'white',
+    justifyContent: 'space-evenly',
   },
   reviewHeading: {
     fontFamily: FONT,
     fontSize: 25,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   reviewsRow: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   avatarText: {
-    alignSelf: "center",
+    alignSelf: 'center',
     fontSize: 20,
   },
   iconRow: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   divider: {
     height: 4,
-    backgroundColor: "black",
+    backgroundColor: 'black',
   },
   dividerThin: {
     height: 2,
-    backgroundColor: "black",
+    backgroundColor: 'black',
   },
   verticalDivider: {
     borderLeftWidth: 3,
-    borderLeftColor: "black",
+    borderLeftColor: 'black',
   },
   ratingRow: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   rating: {
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   nameAndRating: {
     alignSelf: "center",
@@ -520,15 +509,15 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 30,
     padding: 90,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -538,16 +527,18 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   bottomIcons: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   designerNavigation: {
-    flexDirection: "row",
-    justifyContent: "space-around",
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   size: {
     fontSize: 15,
+
     color: "red",
+
     paddingTop: 5,
     paddingBottom: 5,
   },
