@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   TextInput,
   TouchableOpacity,
@@ -9,29 +9,29 @@ import {
   Image,
   ActivityIndicator,
   Alert,
-} from 'react-native';
-import { Rating, AirbnbRating } from 'react-native-elements';
+} from "react-native";
+import { Rating, AirbnbRating } from "react-native-elements";
 
 const Review = ({ route, navigation }) => {
   const [rating, setRating] = useState(0);
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const { key } = route.params;
 
   useEffect(() => {
     navigation.setOptions({
-      headerLeft: () => <Button title='Cancel' onPress={() => cancelAlert()} />,
+      headerLeft: () => <Button title="Cancel" onPress={() => cancelAlert()} />,
     });
   }, []);
 
   const cancelAlert = () => {
-    Alert.alert('Cancel Review', '', [
+    Alert.alert("Cancel Review", "", [
       {
-        text: 'No',
+        text: "No",
       },
       {
-        text: 'Yes',
+        text: "Yes",
         onPress: () => navigation.goBack(),
-        style: 'destructive',
+        style: "destructive",
       },
     ]);
   };
@@ -46,12 +46,16 @@ const Review = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.review}>
-        <AirbnbRating selectedColor='teal' reviewColor='teal' onFinishRating={rating => setRating(rating)} />
+        <AirbnbRating
+          selectedColor="teal"
+          reviewColor="teal"
+          onFinishRating={(rating) => setRating(rating)}
+        />
         <TextInput
-          onChangeText={text => setText(text)}
+          onChangeText={(text) => setText(text)}
           style={styles.infoInput}
           multiline
-          placeholder='Leave a message...'
+          placeholder="Leave a message..."
           maxLength={240}
         />
         <TouchableOpacity onPress={onSubmit} style={styles.infoButton}>
@@ -65,13 +69,13 @@ const Review = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   review: {
     flex: 3,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: "space-between",
+    alignItems: "center",
     maxHeight: 300,
   },
   infoInput: {
@@ -79,23 +83,23 @@ const styles = StyleSheet.create({
     width: 250,
     maxWidth: 300,
     borderWidth: 1,
-    borderColor: 'lightgrey',
+    borderColor: "lightgrey",
     borderRadius: 10,
   },
   infoButton: {
     borderWidth: 0.2,
-    borderColor: 'lightgrey',
+    borderColor: "lightgrey",
     borderRadius: 10,
     padding: 10,
-    backgroundColor: '#528c9e',
+    backgroundColor: "#528c9e",
     width: 200,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    alignItems: "center",
+    justifyContent: "flex-end",
   },
   infoButtonText: {
-    color: 'white',
+    color: "white",
     fontSize: 17,
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 //import OAuthManager from 'react-native-oauth'
 import {
   StyleSheet,
@@ -10,20 +10,26 @@ import {
   Button,
   TouchableOpacity,
   Platform,
-} from 'react-native';
-import { GoogleSigninButton, GoogleSignin, statusCodes } from 'react-native-google-signin';
-import { disableExpoCliLogging } from 'expo/build/logs/Logs';
+} from "react-native";
+import {
+  GoogleSigninButton,
+  GoogleSignin,
+  statusCodes,
+} from "react-native-google-signin";
+import { disableExpoCliLogging } from "expo/build/logs/Logs";
 
-const linkToImage = 'https://ksassets.timeincuk.net/wp/uploads/sites/56/2018/06/living-room-wallpaper-ideas-map.jpg';
+const linkToImage =
+  "https://ksassets.timeincuk.net/wp/uploads/sites/56/2018/06/living-room-wallpaper-ideas-map.jpg";
 
-const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
+const FONT = Platform.OS == "android" ? "monospace" : "arial";
 
 export default class Login extends Component {
   componentDidMount() {
     GoogleSignin.configure({
-      webClientId: '929469838203-kk06n8d284q9qe5hrqh2g0vu3uca0bjd.apps.googleusercontent.com',
+      webClientId:
+        "929469838203-kk06n8d284q9qe5hrqh2g0vu3uca0bjd.apps.googleusercontent.com",
       offlineAccess: true,
-      hostedDomain: '',
+      hostedDomain: "",
       forceConsentPrompt: true,
     });
   }
@@ -56,7 +62,10 @@ export default class Login extends Component {
         <Text style={styles.phrase}> Interior Design Made Easy</Text>
 
         <View style={styles.formContainer}>
-          <GoogleSigninButton style={styles.buttonContainer} onPress={this._signIn} />
+          <GoogleSigninButton
+            style={styles.buttonContainer}
+            onPress={() => this.props.navigation.navigate("profileSetup")}
+          />
         </View>
       </ImageBackground>
     );
@@ -66,32 +75,32 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   input: {
     height: 50,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginBottom: 40,
   },
   mainName: {
     fontSize: 50,
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
     paddingTop: 50,
-    fontFamily: Platform.OS == 'android' ? 'monospace' : 'arial',
+    fontFamily: Platform.OS == "android" ? "monospace" : "arial",
   },
   phrase: {
     fontSize: 25,
-    color: 'black',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    color: "black",
+    fontWeight: "bold",
+    textAlign: "center",
     fontFamily: FONT,
   },
   logo: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   formContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   buttonContainer: {
     width: 150,
