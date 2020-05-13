@@ -12,7 +12,6 @@ import {
   ImageStore,
   SafeAreaView,
 } from "react-native";
-//import { GoogleSignin, GoogleSigninButton, statusCodes} from 'react-native-google-signin';
 import { disableExpoCliLogging } from "expo/build/logs/Logs";
 
 export default function ID({ route, navigation }) {
@@ -25,7 +24,7 @@ export default function ID({ route, navigation }) {
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
   const button = (
     <Button
-      onPress={() => navigation.navigate("Chat")}
+      onPress={() => navigation.navigate("Request", { name })}
       icon={
         <Icon name="email-plus-outline" size={30} type="material-community" />
       }
@@ -148,7 +147,7 @@ export default function ID({ route, navigation }) {
 
         <TouchableOpacity
           style={styles.designerNavigation}
-          onPress={() => navigation.navigate("Chat")}
+          onPress={() => navigation.navigate("Chat", { name: name })}
         >
           <Icon name="sc-telegram" size={50} type="evilicon" />
         </TouchableOpacity>

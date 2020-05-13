@@ -15,7 +15,7 @@ import {
   GoogleSigninButton,
   GoogleSignin,
   statusCodes,
-} from "@react-native-community/google-signin";
+} from "react-native-google-signin";
 import { disableExpoCliLogging } from "expo/build/logs/Logs";
 
 const linkToImage =
@@ -23,23 +23,53 @@ const linkToImage =
 
 const FONT = Platform.OS == "android" ? "monospace" : "arial";
 
-export default function Login({ navigation }) {
-  return (
-    <ImageBackground source={{ uri: linkToImage }} style={styles.logo}>
-      <View>
-        <Text style={styles.mainName}>INDESYN</Text>
-      </View>
+export default class Login extends Component {
+  componentDidMount() {
+    GoogleSignin.configure({
+      webClientId:
+        "929469838203-kk06n8d284q9qe5hrqh2g0vu3uca0bjd.apps.googleusercontent.com",
+      offlineAccess: true,
+      hostedDomain: "",
+      forceConsentPrompt: true,
+    });
+  }
 
-      <Text style={styles.phrase}> Interior Design Made Easy</Text>
+  _signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      this.setState({ userInfo: userInfo, loggedIn: true });
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (f.e. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
 
-      <View style={styles.formContainer}>
-        <GoogleSigninButton
-          style={styles.buttonContainer}
-          onPress={() => navigation.navigate("profileSetup")}
-        />
-      </View>
-    </ImageBackground>
-  );
+  render() {
+    return (
+      <ImageBackground source={{ uri: linkToImage }} style={styles.logo}>
+        <View>
+          <Text style={styles.mainName}>INDESYN</Text>
+        </View>
+
+        <Text style={styles.phrase}> Interior Design Made Easy</Text>
+
+        <View style={styles.formContainer}>
+          <GoogleSigninButton
+            style={styles.buttonContainer}
+            onPress={() => this.props.navigation.navigate("profileSetup")}
+          />
+        </View>
+      </ImageBackground>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

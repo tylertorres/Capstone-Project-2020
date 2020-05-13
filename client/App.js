@@ -11,6 +11,10 @@ import ID from "./components/ID";
 import profileSetup from "./components/profileSetup";
 import Chat from "./components/Chat";
 import Reviews from "./components/Reviews";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Request from "./components/Request";
+import Review from "./components/Review";
+import Test from "./components/test";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,6 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        {/* <Stack.Screen name={'test'} component={Test} /> */}
         <Stack.Screen
           name={"Login"}
           component={Login}
@@ -53,15 +58,21 @@ export default function App() {
           component={profileSetup}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name={"Chat"} component={Chat} />
+        <Stack.Screen
+          name={"Chat"}
+          component={Chat}
+          options={({ route }) => ({ title: route.params.name })}
+        />
         <Stack.Screen name={"Reviews"} component={Reviews} />
+        <Stack.Screen name={"Request"} component={Request} />
+        <Stack.Screen name={"Review"} component={Review} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
+/* 
 const MainStack = createStackNavigator();
-
 function MainScreens() {
   return (
     <MainStack.Navigator>
@@ -73,7 +84,6 @@ function MainScreens() {
     </MainStack.Navigator>
   );
 }
-
 function MainTabs() {
   return (
     <Tab.Navigator tabBarOptions={{ activeTintColor: 'teal' }}>
@@ -86,8 +96,8 @@ function MainTabs() {
       />
     </Tab.Navigator>
   );
-
-  /* return (
+ */
+/* return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name={'Login'} component={Login} options={{ headerShown: false }} />
@@ -100,4 +110,3 @@ function MainTabs() {
       </Stack.Navigator>
     </NavigationContainer>
   ); */
-}

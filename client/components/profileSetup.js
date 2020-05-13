@@ -27,7 +27,7 @@ export default function profileSetup({ navigation }) {
     backend();
 
     selectedValue === "id"
-      ? navigation.navigate("NID")
+      ? navigation.navigate("NID", { name: name })
       : navigation.navigate("ID", { name: name, id: "ID" });
   }
 
@@ -35,26 +35,24 @@ export default function profileSetup({ navigation }) {
     <View style={styles.mainView}>
       <Text style={styles.enterName}>Enter Name</Text>
 
-
       <TextInput
         style={styles.nameField}
         placeholder="e.g John Doe"
         onChangeText={(val) => setName(val)}
       />
 
-
       <Text style={styles.enterName}>Enter email</Text>
 
       <TextInput
         style={styles.nameField}
-
         placeholder="e.g example@gmail.com"
         keyboardType="email-address"
         onChangeText={(val) => setEmail(val)}
-
       />
 
-      <Text style={styles.pickerText}>Please choose who you want to continue as</Text>
+      <Text style={styles.pickerText}>
+        Please choose who you want to continue as
+      </Text>
 
       <View style={styles.pickerView}>
         <Picker
@@ -66,7 +64,10 @@ export default function profileSetup({ navigation }) {
           <Picker.Item label="User" value="id" />
           <Picker.Item label="Designer" value="nid" />
         </Picker>
-        <TouchableOpacity style={styles.continueButton} onPress={() => combined()}>
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={() => combined()}
+        >
           <Text style={styles.continueText}>Continue</Text>
         </TouchableOpacity>
       </View>

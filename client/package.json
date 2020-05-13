@@ -7,7 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/google-signin": "github:react-native-community/google-signin",
     "@react-native-community/masked-view": "^0.1.7",
     "@react-navigation/bottom-tabs": "^5.3.3",
     "@react-navigation/native": "^5.0.9",
@@ -21,6 +20,7 @@
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-gifted-chat": "^0.13.0",
+    "react-native-google-signin": "^2.1.1",
     "react-native-image-crop-picker": "^0.28.0",
     "react-native-nav": "^2.0.2",
     "react-native-paper": "^3.9.0",
