@@ -60,9 +60,12 @@ const Login = ({ navigation }) => {
 
       <Text style={styles.phrase}> Interior Design Made Easy</Text>
 
-      <View style={styles.formContainer}>
-        <GoogleSigninButton style={styles.buttonContainer} onPress={_signIn} />
-      </View>
+      <GoogleSigninButton
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Light}
+        style={styles.buttonContainer}
+        onPress={_signIn}
+      />
     </ImageBackground>
   );
 };
@@ -98,8 +101,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonContainer: {
-    width: 150,
+    width: 192,
     height: 50,
+    alignSelf: 'center',
+    marginTop: 350,
   },
 });
 
