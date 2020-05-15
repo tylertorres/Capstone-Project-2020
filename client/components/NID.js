@@ -34,15 +34,7 @@ const Item = ({ name, image, rating }) => {
           <Text style={styles.designerName}>{name}</Text>
           <Badge value={<Text style={styles.active}>Active</Text>} status='success' badgeStyle={{ padding: 10 }} />
         </View>
-        <AirbnbRating
-          style={styles.rating}
-          type='custom'
-          imageSize={25}
-          ratingColor='#3498db'
-          ratingBackgroundColor='transparent'
-          readonly
-          startingValue={rating}
-        />
+        <AirbnbRating selectedColor='teal' size={23} isDisabled={true} showRating={false} defaultRating={rating} />
       </View>
     </TouchableOpacity>
   );
@@ -150,25 +142,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     padding: 10,
   },
-
-  status: {
-    justifyContent: 'space-between',
-  },
-
-  findID: {
-    fontFamily: FONT,
-    fontSize: 25,
-    alignSelf: 'center',
-  },
-  imagebutton: {
-    borderWidth: 3,
-    borderColor: 'rgba(0,0,0,0.2)',
-    width: 90,
-    height: 90,
-    backgroundColor: '#fff',
-    borderRadius: 50,
-  },
-
   designerName: {
     alignSelf: 'center',
     fontSize: 15,
@@ -176,14 +149,6 @@ const styles = StyleSheet.create({
   },
   rating: {
     alignSelf: 'center',
-  },
-  designerNavigation: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  bottomIcons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
   },
   active: {
     padding: 15,
