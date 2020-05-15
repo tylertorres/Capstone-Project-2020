@@ -21,7 +21,6 @@ class Chat extends Component {
   componentDidMount() {
     const { route, navigation } = this.props;
     const { name } = route.params;
-    console.log(this.props.navigation);
 
     navigation.setOptions({
       headerRight: () => (
