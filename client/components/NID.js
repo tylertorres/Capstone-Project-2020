@@ -18,10 +18,9 @@ import testList from './testList';
 
 const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
 
-const Item = ({ name, image, rating }) => {
-  console.log(image);
+const Item = ({ name, image, rating, onPress }) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => onPress()}>
       <View style={styles.itemContainer}>
         <Avatar
           size='large'
@@ -48,19 +47,21 @@ export default function NID({ navigation }) {
     });
   });
 
-  const [designers, setDesigners] = useState([
+  const designers = [
     {
       id: '1',
       name: 'Stephania Sam',
       active: true,
-      rating: 3,
+      rating: 5,
       image: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+      description:
+        'Worked on several projects ranging from dining rooms, to living rooms, and more!\nSpecialties are dining rooms!\nCurrently freelancing and enjoy the craft of helper others!',
     },
     {
       id: '2',
       name: 'Henry Smith',
       active: true,
-      rating: 3,
+      rating: 4,
       image:
         'https://www.headshotsnyc.com/wp-content/uploads/galleries/post-44/Stock%20broker%20headshot%20outside%20in%20NYC.jpg',
     },
@@ -75,14 +76,14 @@ export default function NID({ navigation }) {
       id: '4',
       name: 'Roger Davis',
       active: true,
-      rating: 3,
+      rating: 4,
       image: 'https://kelicommheadshots.com/wp-content/uploads/2016/04/Doug-256x256.jpg',
     },
     {
       id: '5',
       name: 'Amy Yam',
       active: true,
-      rating: 3,
+      rating: 4,
       image:
         'https://i1.wp.com/www.susanshek.com/wp-content/uploads/2020/03/susan-shek-headshot-5-1-1.jpg?resize=256,256&ssl=1',
     },
@@ -90,22 +91,22 @@ export default function NID({ navigation }) {
       id: '6',
       name: 'Janice Lema',
       active: true,
-      rating: 3,
+      rating: 4,
       image: 'https://www.nlgja.org/2015/wp-content/uploads/sites/5/2015/08/headshot.jpeg',
     },
     {
       id: '7',
       name: 'Stephen Chia',
       active: true,
-      rating: 3,
+      rating: 5,
       image: 'https://warriorcentrichealth.com/wp-content/uploads/2019/09/Joe-Hurd-1.png',
     },
-    { id: '8', name: 'Ranee Rausch', active: true, rating: 3, image: 'https://i.picsum.photos/id/623/200/300.jpg' },
+    { id: '8', name: 'Ranee Rausch', active: true, rating: 4, image: 'https://i.picsum.photos/id/623/200/300.jpg' },
     { id: '9', name: 'Denis Pinter', active: true, rating: 3, image: 'https://i.picsum.photos/id/402/200/300.jpg' },
-    { id: '10', name: 'Juliana Whitner', active: true, rating: 3, image: 'https://i.picsum.photos/id/879/200/300.jpg' },
-    { id: '11', name: 'Darnell Ferrero', active: true, rating: 3, image: 'https://i.picsum.photos/id/582/200/300.jpg' },
-    { id: '12', name: 'Karrie Noblitt', active: true, rating: 3, image: 'https://i.picsum.photos/id/399/200/300.jpg' },
-    { id: '13', name: 'Mohamed Li', active: true, rating: 3, image: 'https://i.picsum.photos/id/1026/4621/3070.jpg' },
+    { id: '10', name: 'Juliana Whitner', active: true, rating: 4, image: 'https://i.picsum.photos/id/879/200/300.jpg' },
+    { id: '11', name: 'Darnell Ferrero', active: true, rating: 2, image: 'https://i.picsum.photos/id/582/200/300.jpg' },
+    { id: '12', name: 'Karrie Noblitt', active: true, rating: 2, image: 'https://i.picsum.photos/id/399/200/300.jpg' },
+    { id: '13', name: 'Mohamed Li', active: true, rating: 5, image: 'https://i.picsum.photos/id/1026/4621/3070.jpg' },
     {
       id: '14',
       name: 'Aurelia Farnum',
@@ -114,12 +115,16 @@ export default function NID({ navigation }) {
       image: 'https://i.picsum.photos/id/1027/2848/4272.jpg',
     },
     { id: '15', name: 'Ben Breeding', active: true, rating: 3, image: 'https://i.picsum.photos/id/1056/3988/2720.jpg' },
-    { id: '16', name: 'Ollie Moniz', active: true, rating: 3, image: 'https://i.picsum.photos/id/7/200/300.jpg' },
-    { id: '17', name: 'Daniel Carrales', active: true, rating: 3, image: 'https://i.picsum.photos/id/204/200/300.jpg' },
-  ]);
+    { id: '16', name: 'Ollie Moniz', active: true, rating: 4, image: 'https://i.picsum.photos/id/7/200/300.jpg' },
+    { id: '17', name: 'Daniel Carrales', active: true, rating: 4, image: 'https://i.picsum.photos/id/204/200/300.jpg' },
+  ];
 
   const renderSeparator = () => {
     return <View style={{ height: 1, width: '100%', backgroundColor: 'lightgrey' }} />;
+  };
+
+  const handleOnPress = item => {
+    navigation.navigate('viewingID', { item });
   };
 
   return (
@@ -128,7 +133,15 @@ export default function NID({ navigation }) {
         ItemSeparatorComponent={renderSeparator}
         data={designers}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <Item style={styles.item} name={item.name} rating={item.rating} image={item.image} />}
+        renderItem={({ item }) => (
+          <Item
+            onPress={() => handleOnPress(item)}
+            name={item.name}
+            rating={item.rating}
+            image={item.image}
+            item={item}
+          />
+        )}
       />
     </SafeAreaView>
   );

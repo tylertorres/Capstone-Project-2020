@@ -21,7 +21,7 @@ export default profileSetup = ({ navigation }) => {
 
     selectedValue === 'id'
       ? navigation.navigate('Find a Designer')
-      : navigation.navigate('ID', { name: name, id: 'ID' });
+      : navigation.navigate('ID', { name: user, id: 'ID' });
   }
 
   return (

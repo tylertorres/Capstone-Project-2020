@@ -64,7 +64,8 @@ const Login = ({ navigation }) => {
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Light}
         style={styles.buttonContainer}
-        onPress={_signIn}
+        /* onPress={_signIn} */
+        onPress={() => navigation.navigate('Find a Designer')}
       />
     </ImageBackground>
   );

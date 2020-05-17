@@ -16,9 +16,9 @@ import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 
 export default function ID({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const { name } = route.params;
-  const { uri } = route.params;
-  const { id } = route.params;
+  const {
+    item: { name, image, id },
+  } = route.params;
   const empty = null;
   const type = id == 'NID' ? true : false;
   const upload = <Text style={styles.upload}>Upload Photo</Text>;
@@ -39,7 +39,7 @@ export default function ID({ route, navigation }) {
   return (
     <View style={styles.mainView}>
       <View style={styles.idRow}>
-        <Avatar size='large' containerStyle={{ borderWidth: 3 }} rounded source={{ uri: uri }} />
+        <Avatar size='large' containerStyle={{ borderWidth: 3 }} rounded source={{ uri: image }} />
 
         <Text style={styles.designerInfo}>{name}</Text>
 

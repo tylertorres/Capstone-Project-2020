@@ -17,6 +17,7 @@ import Review from './components/Review';
 import Test from './components/test';
 import UserState from './components/context/user/UserState';
 import { IconButton } from 'react-native-paper';
+import viewingID from './components/viewingID';
 
 const Tab = createBottomTabNavigator();
 
@@ -54,10 +55,10 @@ function MainScreens() {
       <MainStack.Screen name='Login' component={Login} options={{ headerShown: false }} navigationOptions />
       <MainStack.Screen name='profileSetup' component={profileSetup} options={{ headerShown: false }} />
       <MainStack.Screen name='Find a Designer' component={NID} options={{ headerLeft: () => null }} />
-      <MainStack.Screen name='ID' component={ID} options={{}} />
       <MainStack.Screen name='Request' component={Request} />
       <MainStack.Screen name='Review' component={Review} />
       <MainStack.Screen name='Chat' component={Chat} options={({ route }) => ({ title: route.params.name })} />
+      <MainStack.Screen name='viewingID' component={viewingID} />
     </MainStack.Navigator>
   );
 }
