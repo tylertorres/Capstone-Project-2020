@@ -48,6 +48,7 @@ const Login = ({ navigation }) => {
       } else if (error.code === statusCodes.IN_PROGRESS) {
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
       } else {
+        q;
       }
     }
   };
@@ -65,7 +66,7 @@ const Login = ({ navigation }) => {
         color={GoogleSigninButton.Color.Light}
         style={styles.buttonContainer}
         /* onPress={_signIn} */
-        onPress={() => navigation.navigate('Find a Designer')}
+        onPress={() => navigation.navigate('viewingAsID')}
       />
     </ImageBackground>
   );

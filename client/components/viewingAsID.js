@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext, useLayoutEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -11,11 +11,13 @@ import {
   SafeAreaView,
   FlatList,
   Modal,
+  Alert,
 } from 'react-native';
 import { Avatar, Button, Divider, Icon, AirbnbRating } from 'react-native-elements';
 import { IconButton } from 'react-native-paper';
 import { render } from 'react-dom';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import UserContext from './context/user/userContext';
 
 const Nav = ({ navigation, setMainView }) => {
   const [onPortfolio, setPortfolio] = useState(true);
@@ -74,19 +76,29 @@ const renderSeparator = () => {
   return <View style={{ height: 1, width: '100%', backgroundColor: 'lightgrey' }} />;
 };
 
-const viewingID = ({ route, navigation }) => {
-  const {
-    item: { name, image, id, description },
-  } = route.params;
+const viewingAsID = ({ navigation }) => {
+  const userContext = useContext(UserContext);
+  const { name, profilePic, bio } = userContext;
+  const [save, setSave] = useState(false);
 
   useEffect(() => {
+    const parent = navigation.dangerouslyGetParent();
+    parent.setOptions({
+      tabBarVisible: true,
+    });
+
     navigation.setOptions({
       title: name,
-      headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate('Request', { name })} style={styles.connectBtn}>
-          <Text style={styles.connectText}>Connect</Text>
-        </TouchableOpacity>
-      ),
+      headerLeft: () => null,
+      headerRight: () => {
+        return save ? (
+          <TouchableOpacity onPress={() => navigation.navigate('Request', { name })} style={styles.connectBtn}>
+            <Text style={styles.connectText}>Save</Text>
+          </TouchableOpacity>
+        ) : (
+          <IconButton onPress={() => settingsAlert()} icon='cogs' color='#007FFF' size={25} />
+        );
+      },
     });
   });
 
@@ -236,11 +248,39 @@ const viewingID = ({ route, navigation }) => {
     setReviewModalInfo({});
   };
 
+  // Settings Logic //
+  const settingsAlert = () => {
+    Alert.alert('Account Settings', '', [
+      {
+        text: 'Change Bio',
+        onPress: () => setSave(!save),
+
+        // Change the button to save
+        // Change state of edit
+        // When save is clicked,
+      },
+      {
+        text: 'Change Profile Picture',
+      },
+      {
+        text: 'Back',
+      },
+    ]);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Avatar size={115} rounded source={{ uri: image }} />
-        <Text style={styles.headerText}>{description}</Text>
+        <Avatar size={115} rounded source={{ uri: profilePic }} />
+        <TextInput
+          maxLength={200}
+          multiline={true}
+          numberOfLines={0}
+          editable={save ? true : false}
+          style={styles.headerText}
+        >
+          This is random text to test how to make it more user friendly
+        </TextInput>
       </View>
       <View>
         <Nav setMainView={bool => setupLayout(bool)} />
@@ -309,8 +349,10 @@ const styles = StyleSheet.create({
   },
   header: {
     justifyContent: 'space-around',
+    alignItems: 'center',
     flexDirection: 'row',
     marginTop: 20,
+    /* height: 150, */
   },
   headerText: {
     color: 'black',
@@ -318,6 +360,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir-Roman',
     width: 250,
     lineHeight: 23,
+    alignSelf: 'flex-start',
   },
   nav: {
     justifyContent: 'space-around',
@@ -456,4 +499,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default viewingID;
+export default viewingAsID;

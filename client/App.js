@@ -18,6 +18,7 @@ import Test from './components/test';
 import UserState from './components/context/user/UserState';
 import { IconButton } from 'react-native-paper';
 import viewingID from './components/viewingID';
+import viewingAsID from './components/viewingAsID';
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,7 @@ export default function App() {
         <Tab.Navigator
           tabBarOptions={{
             activeTintColor: 'teal',
+            inactiveTintColor: 'gray',
           }}
         >
           <Tab.Screen
@@ -59,6 +61,31 @@ function MainScreens() {
       <MainStack.Screen name='Review' component={Review} />
       <MainStack.Screen name='Chat' component={Chat} options={({ route }) => ({ title: route.params.name })} />
       <MainStack.Screen name='viewingID' component={viewingID} />
+      <MainStack.Screen name='viewingAsID' component={viewingAsID} />
     </MainStack.Navigator>
+  );
+}
+
+const TabID = createBottomTabNavigator();
+function IDScreen() {
+  return (
+    <TabID.Navigator
+      tabBarOptions={{
+        activeTintColor: 'teal',
+      }}
+    >
+      <TabID.Screen
+        name='Profile'
+        component={viewingAsID}
+        options={{
+          tabBarIcon: (focused, color, size) => <IconButton icon='account' color={color} size={size} />,
+        }}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
+      />
+    </TabID.Navigator>
   );
 }

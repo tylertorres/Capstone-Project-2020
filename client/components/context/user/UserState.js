@@ -9,6 +9,9 @@ const UserState = props => {
       id: null,
       email: '',
       name: '',
+      //IDs
+      profilePic: '',
+      bio: '',
     },
   };
 
@@ -16,12 +19,14 @@ const UserState = props => {
 
   const SetUserInfo = userInfo => {
     const { user } = userInfo;
-    const { email, name, id } = user;
+    const { email, name, id, profilePic, bio } = user;
 
     var userInd = {
       email,
       name,
       id,
+      profilePic,
+      bio,
     };
 
     dispatch({

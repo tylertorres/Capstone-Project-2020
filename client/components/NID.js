@@ -14,7 +14,6 @@ import {
 import { disableExpoCliLogging } from 'expo/build/logs/Logs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
-import testList from './testList';
 
 const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
 
