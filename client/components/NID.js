@@ -677,6 +677,7 @@ export default function NID({ route, navigation }) {
         </TouchableOpacity>
 
         <Divider style={styles.divider} />
+
         <TouchableOpacity
           style={styles.designerNavigation}
           onPress={() =>
