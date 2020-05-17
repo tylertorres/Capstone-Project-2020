@@ -1,17 +1,9 @@
-import React, { Component, useState, Fragment } from "react";
-import { Avatar, Button, Divider, Icon, Rating } from "react-native-elements";
-import {
-  View,
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  Modal,
-  ScrollView,
-} from "react-native";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import React, { Component, useState, Fragment } from 'react';
+import { Avatar, Button, Divider, Icon, Rating } from 'react-native-elements';
+import { View, StyleSheet, SafeAreaView, Text, TouchableOpacity, Modal, ScrollView } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const FONT = Platform.OS == "android" ? "monospace" : "arial";
+const FONT = Platform.OS == 'android' ? 'monospace' : 'arial';
 
 export default function Review({ route, navigation }) {
   const [modalOpen, setModal] = useState(false);
@@ -49,7 +41,7 @@ export default function Review({ route, navigation }) {
 
       <Divider style={styles.divider} />
 
-      <Modal animationType="fade" visible={modalOpen} transparent>
+      <Modal animationType='fade' visible={modalOpen} transparent>
         <TouchableOpacity
           style={styles.centeredView}
           onPressOut={() => {
@@ -58,12 +50,10 @@ export default function Review({ route, navigation }) {
         >
           <View style={styles.modalView}>
             <Text>
-              Great communication when I connected with Janice! She was very
-              nice and she answered all of the questions I had concernig the
-              layout of my apartment.
+              Great communication when I connected with Janice! She was very nice and she answered all of the questions
+              I had concernig the layout of my apartment.
             </Text>
-
-         </View>
+          </View>
         </TouchableOpacity>
       </Modal>
 
@@ -504,7 +494,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   nameAndRating: {
-    alignSelf: "center",
+    alignSelf: 'center',
     //paddingLeft: 10,
   },
   centeredView: {
@@ -537,7 +527,7 @@ const styles = StyleSheet.create({
   size: {
     fontSize: 15,
 
-    color: "red",
+    color: 'red',
 
     paddingTop: 5,
     paddingBottom: 5,

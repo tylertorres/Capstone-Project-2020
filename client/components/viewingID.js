@@ -12,8 +12,9 @@ import {
   FlatList,
   Modal,
 } from 'react-native';
-import { Avatar, Button, Divider, Icon } from 'react-native-elements';
+import { Avatar, Button, Divider, Icon, AirbnbRating } from 'react-native-elements';
 import { IconButton } from 'react-native-paper';
+import { render } from 'react-dom';
 
 const Nav = ({ navigation, setMainView }) => {
   const [onPortfolio, setPortfolio] = useState(true);
@@ -43,7 +44,34 @@ const PortfolioItem = ({ item, onPress }) => {
   );
 };
 
-const ReviewItem = ({ item }) => {};
+const ReviewItem = ({ item }) => {
+  return (
+    <TouchableOpacity onPress={() => onPress()}>
+      <View style={styles.reviewContainer}>
+        <View style={styles.textContainer}>
+          <Text style={styles.textContainerName}>{item.name}</Text>
+          <Text style={styles.textContainerDesc} numberOfLines={2}>
+            {' '}
+            {item.description}
+          </Text>
+        </View>
+        <View style={{ marginLeft: 10 }}>
+          <AirbnbRating
+            selectedColor='teal'
+            size={23}
+            isDisabled={true}
+            showRating={false}
+            defaultRating={item.rating}
+          />
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+const renderSeparator = () => {
+  return <View style={{ height: 1, width: '100%', backgroundColor: 'lightgrey' }} />;
+};
 
 const viewingID = ({ route, navigation }) => {
   const {
@@ -65,6 +93,8 @@ const viewingID = ({ route, navigation }) => {
   const [modalInfo, setModalInfo] = useState({});
   const [mainView, setMainView] = useState(true);
   const [columnCount, setCount] = useState(2);
+  const [reviewModal, setReviewModal] = useState(false);
+  const [reviewModalInfo, setReviewModalInfo] = useState({});
 
   const portfolioImages = [
     {
@@ -192,6 +222,8 @@ const viewingID = ({ route, navigation }) => {
     setCount(bool ? 2 : 1);
   };
 
+  // Review Modal //
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -212,12 +244,26 @@ const viewingID = ({ route, navigation }) => {
           />
         ) : (
           <FlatList
+            ItemSeparatorComponent={renderSeparator}
             data={reviews}
             numColumns={columnCount}
             key={columnCount}
-            renderItem={({ item }) => <PortfolioItem onPress={() => setupModal(item)} item={item} />}
+            renderItem={({ item }) => <ReviewItem item={item} />}
           />
         )}
+
+        <Modal animationType='fade' visible={reviewModal} transparent>
+          <TouchableOpacity onPressOut={() => closeModal()} style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View style={styles.modalImageContainer}>
+                <Image style={styles.modalImage} source={{ uri: modalInfo.image }} />
+              </View>
+              <View style={styles.modalTextContainer}>
+                <Text style={styles.modalText}>{modalInfo.description}</Text>
+              </View>
+            </View>
+          </TouchableOpacity>
+        </Modal>
 
         <Modal animationType='fade' visible={modalOpen} transparent>
           <TouchableOpacity onPressOut={() => closeModal()} style={styles.centeredView}>
@@ -332,6 +378,24 @@ const styles = StyleSheet.create({
   },
   modalText: {
     fontSize: 16,
+    fontFamily: 'Avenir-Roman',
+  },
+  reviewContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    padding: 10,
+  },
+  textContainer: {
+    alignItems: 'center',
+    width: 200,
+    flexDirection: 'column',
+  },
+  textContainerName: {
+    marginBottom: 5,
+    fontFamily: 'Avenir-Roman',
+    fontSize: 16,
+  },
+  textContainerDesc: {
     fontFamily: 'Avenir-Roman',
   },
 });
