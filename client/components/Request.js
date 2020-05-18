@@ -11,6 +11,8 @@ const Request = ({ route, navigation }) => {
   const { name } = route.params;
   const { key } = route;
 
+  const nameFormatted = `Submit a Request to \n ${name}`;
+
   const onImageSubmission = () => {
     ImagePicker.openPicker({ multiple: true, maxFiles: 4 })
       .then(images => {
@@ -59,11 +61,10 @@ const Request = ({ route, navigation }) => {
     }, 3000);
   };
 
-  const { designer } = route.params;
   return (
     <View style={styles.container}>
       <View style={styles.info}>
-        <Text style={styles.infoText}>Submit a Request to {name}</Text>
+        <Text style={styles.infoText}>{nameFormatted}</Text>
         <TextInput
           style={styles.infoInput}
           multiline
@@ -123,6 +124,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontWeight: 'bold',
     color: '#1b5675',
+    textAlign: 'center',
   },
   infoInput: {
     padding: 10,
