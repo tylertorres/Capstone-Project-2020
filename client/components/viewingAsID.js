@@ -10,7 +10,6 @@ import {
   ImageStore,
   SafeAreaView,
   FlatList,
-  Modal,
   Alert,
 } from 'react-native';
 import { Avatar, Button, Divider, Icon, AirbnbRating } from 'react-native-elements';
@@ -19,6 +18,8 @@ import { render } from 'react-dom';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import UserContext from './context/user/userContext';
 import ImagePicker from 'react-native-image-crop-picker';
+import Fire from '../firebase/Fire';
+import Modal from 'react-native-modal';
 
 const Nav = ({ navigation, setMainView }) => {
   const [onPortfolio, setPortfolio] = useState(true);
@@ -79,7 +80,8 @@ const renderSeparator = () => {
 
 const viewingAsID = ({ navigation }) => {
   const userContext = useContext(UserContext);
-  const { name, profilePic, bio, active } = userContext;
+  const { user } = userContext;
+  const { active, name, email, bio, photo, id } = user;
   const [save, setSave] = useState(false);
 
   const onImageSubmission = () => {
@@ -92,6 +94,21 @@ const viewingAsID = ({ navigation }) => {
         console.log(error);
       });
   };
+
+  const setTransition = message => {
+    setChatVisible(!chatModalVisible);
+  };
+
+  useEffect(() => {
+    Fire.shared.database.limitToLast(1).on('child_added', snapshot => {
+      const lastMessage = [snapshot.val()];
+      if (!isFirst) {
+        setIsFirst(true);
+        return;
+      }
+      setTransition(lastMessage);
+    });
+  }, []);
 
   useEffect(() => {
     const parent = navigation.dangerouslyGetParent();
@@ -120,12 +137,17 @@ const viewingAsID = ({ navigation }) => {
   const [columnCount, setCount] = useState(2);
   const [reviewModal, setReviewModal] = useState(false);
   const [reviewModalInfo, setReviewModalInfo] = useState({});
-  const [bioText, setBioText] = useState(bio);
-  const [isActive, setActive] = useState(active);
+  const [bioText, setBioText] = useState(''); // come back to
+  const [isActive, setActive] = useState(false); // come back to
   const [deleting, setDeleting] = useState(false);
   const [uploadImage, setImageUpload] = useState(null);
   const [uploadModal, setUpload] = useState(false);
   const [imageDesc, setDesc] = useState('');
+
+  // Designer Chat Modal //
+  const [chatModalVisible, setChatVisible] = useState(false);
+  const [userL, setUser] = useState('Nick Samaroo'); // will be an object
+  const [isFirst, setIsFirst] = useState(false);
 
   const [portfolioImages, setImages] = useState([
     {
@@ -133,55 +155,61 @@ const viewingAsID = ({ navigation }) => {
       image:
         'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
       description:
-        'Testing how exactly i will do things in this way and which they will be playing. As you can see this room exhibits qualites of a major hardcore fucking man  and that is his life goal to be and be ambgious as hell.',
+        'A room themed around a certain color and aesthetic that captured the embodiment of the people living there.',
     },
     {
       id: '2',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly i will do things in this way and which they will be playing',
+        'https://www.mydomaine.com/thmb/FYZUwRE2KjWot0IYUVXVTu0YZbk=/1500x1500/smart/filters:no_upscale()/KatherineCarter-c674461f12354fdc956b6b5e0185c5cd.jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '3',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly i will do things in this way and which they will be playing',
+        'https://p7.hiclipart.com/preview/585/287/766/interior-design-services-architecture-drawing-sketch-interior-designer.jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '4',
-      image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly I will do things in this way and which they will be playing',
+      image: 'https://www.dhoumm.co/cdn-k1/no/interior-design-wallpaper-background_room-interior-and-decoration.jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '5',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly I will do things in this way and which they will be playing',
+        'https://img.freepik.com/free-photo/modern-workspace-with-futuristic-background_23-2148327021.jpg?size=626&ext=jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '6',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly I will do things in this way and which they will be playing',
+        'https://fthmb.tqn.com/kVpo4zFn-IRel7_g-hB3vXseD0A=/puresaltinteriors.-cb503015f1954be8ab6f750cda87a326.jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '7',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly I will do things in this way and which they will be playing',
+        'https://i7.pngguru.com/preview/633/993/215/bookcase-interior-design-services-designer-creative-interior-design.jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '8',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly I will do things in this way and which they will be playing',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRl9lxsiiXx7-CldlpvNM5vlPG__d4jyr9UmvkCl_6pQAhEJBov&usqp=CAU',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
     {
       id: '9',
-      image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
-      description: 'Testing how exactly I will do things in this way and which they will be playing',
+      image: 'https://i.pinimg.com/originals/0b/ba/30/0bba3056e8720649e305f5b49173d77e.jpg',
+      description:
+        'Testing how exactly I will do things in this way and outlined the beginning stages of the architecture.',
     },
   ]);
   const reviews = [
@@ -190,52 +218,104 @@ const viewingAsID = ({ navigation }) => {
       name: 'Stephania Sam',
       rating: 5,
       description:
-        'They were extremely helpful in getting my room to where i wanted it to be!They were extremely helpful in getting my room to where i wanted it to be!They were extremely helpful in getting my room to where i wanted it to be!They were extremely helpful in getting my room to where i wanted it to be!',
+        'They were extremely helpful in getting my room to where I wanted it to be! They were extremely helpful in getting my room to where I wanted it to be!They were extremely helpful in getting my room to where I wanted it to be! They were extremely helpful in getting my room to where I wanted it to be!',
     },
     {
       key: '2',
       name: 'Henry Smith',
       rating: 4,
+      description: 'Great communication when I ...',
     },
     {
       key: '3',
       name: 'Stacey Wayne',
       rating: 3,
+      description: 'Helped me at every step of the ...',
     },
     {
       key: '4',
       name: 'Roger Davis',
       rating: 4,
+      description: 'Provided some great advice ...',
     },
     {
       key: '5',
       name: 'Amy Yam',
       rating: 4,
+      description: 'Was very clear in explaining ...',
     },
     {
       key: '6',
       name: 'Janice Lema',
       rating: 4,
+      description: 'Was very helpful in designing my room ...',
     },
     {
       key: '7',
       name: 'Stephen Chia',
       rating: 5,
+      description: 'Answered my questions ...',
     },
-    { key: '8', name: 'Ranee Rausch', rating: 4 },
-    { key: '9', name: 'Denis Pinter', rating: 3 },
-    { key: '10', name: 'Juliana Whitner', rating: 4 },
-    { key: '11', name: 'Darnell Ferrero', rating: 2 },
-    { key: '12', name: 'Karrie Noblitt', rating: 2 },
-    { key: '13', name: 'Mohamed Li', rating: 5 },
+    {
+      key: '8',
+      name: 'Ranee Rausch',
+      rating: 4,
+      description: 'Very insighful room layouts ...',
+    },
+    {
+      key: '9',
+      name: 'Denis Pinter',
+      rating: 3,
+      description: 'Caring individual and thought oriented ...',
+    },
+    {
+      key: '10',
+      name: 'Juliana Whitner',
+      rating: 4,
+      description: 'Took time to explain nuances of room ...',
+    },
+    {
+      key: '11',
+      name: 'Darnell Ferrero',
+      rating: 2,
+      description: 'Very cool! Talked to me nicely ...',
+    },
+    {
+      key: '12',
+      name: 'Karrie Noblitt',
+      rating: 2,
+      description: 'Caring and understanding of time ...',
+    },
+    {
+      key: '13',
+      name: 'Mohamed Li',
+      rating: 5,
+      description: 'Very cool, very nice, 10 /10 ...',
+    },
     {
       key: '14',
       name: 'Aurelia Farnum',
       rating: 3,
+      description: 'Had my doubts in the beginning but pulled around ...',
     },
-    { key: '15', name: 'Ben Breeding', rating: 3 },
-    { key: '16', name: 'Ollie Moniz', rating: 4 },
-    { key: '17', name: 'Daniel Carrales', rating: 4 },
+    {
+      key: '15',
+      name: 'Ben Breeding',
+      rating: 3,
+      description: 'They had me in the first half not gonna lie ...',
+    },
+    {
+      key: '16',
+      name: 'Ollie Moniz',
+      rating: 4,
+      description: 'I highly recommend choosing this designer! ...',
+    },
+    {
+      key: '17',
+      name: 'Daniel Carrales',
+      rating: 4,
+      description: 'Will be utilizing his services again! ...',
+    },
   ];
 
   // Upload //
@@ -328,14 +408,26 @@ const viewingAsID = ({ navigation }) => {
     setUpload(false);
   };
 
+  const handleChatModal = ({ swipingDirection }) => {
+    if (swipingDirection === 'left') {
+      setChatVisible(!chatModalVisible);
+      return;
+    }
+    // Go to chat
+    setChatVisible(!chatModalVisible);
+    setTimeout(() => navigation.navigate('Chat', { name: userL, isDesigner: true }), 1000);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Avatar
+          activeOpacity={1}
+          onPress={() => setChatVisible(!chatModalVisible)}
           containerStyle={isActive ? { borderWidth: 2.5, borderColor: 'green' } : {}}
           size={115}
           rounded
-          source={{ uri: 'https://i.picsum.photos/id/1027/2848/4272.jpg' }}
+          source={{ uri: photo }}
         />
         <TextInput
           onChangeText={text => setBioText(text)}
@@ -371,6 +463,39 @@ const viewingAsID = ({ navigation }) => {
             renderItem={({ item }) => <ReviewItem onPress={() => setupReviewModal(item)} item={item} />}
           />
         )}
+        {/* Modals */}
+
+        <Modal
+          isVisible={chatModalVisible}
+          animationIn='slideInDown'
+          animationInTiming={1000}
+          animationOutTiming={500}
+          swipeDirection={['left', 'right']}
+          swipeThreshold={10}
+          onSwipeComplete={swipeDirection => handleChatModal(swipeDirection)}
+          transparent
+          hasBackdrop={false}
+        >
+          <View style={styles.chatModalContainer}>
+            <View style={styles.chatView}>
+              <View style={styles.chatUser}>
+                <Text numberOfLines={0} style={styles.chatText}>
+                  {userL} wants your advice, will you accept?
+                </Text>
+              </View>
+              <View style={styles.chatModalArrows}>
+                <View style={styles.chatDecline}>
+                  <IconButton color='#a50000' icon='arrow-left' />
+                  <Text style={styles.chatDeclineText}>Decline</Text>
+                </View>
+                <View style={styles.chatAccept}>
+                  <Text style={styles.chatAcceptText}>Accept</Text>
+                  <IconButton color='white' icon='arrow-right' />
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
 
         <Modal onPressOut={() => closeReviewModal()} animationType='slide' visible={reviewModal} transparent>
           <View style={styles.centeredView}>
@@ -650,6 +775,59 @@ const styles = StyleSheet.create({
   uploadBtnText: {
     color: 'white',
     textAlign: 'center',
+  },
+  chatModalContainer: {
+    flex: 1,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  chatView: {
+    backgroundColor: 'teal',
+    borderRadius: 35,
+    padding: 0,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 10,
+  },
+  chatText: {
+    fontSize: 16,
+    fontFamily: 'Avenir-Roman',
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: '700',
+  },
+  chatModalArrows: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  chatDecline: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  chatAccept: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  chatDeclineText: {
+    marginRight: 50,
+    fontSize: 15,
+    color: '#a50000',
+    fontWeight: '600',
+  },
+  chatAcceptText: {
+    fontSize: 15,
+    color: 'white',
+    fontWeight: '600',
+  },
+  chatUser: {
+    marginTop: 10,
+    marginHorizontal: 20,
   },
 });
 

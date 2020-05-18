@@ -13,19 +13,30 @@ class Chat extends Component {
 
   get user() {
     return {
-      name: 'Tyler',
+      name: 'Nick Samaroo',
       _id: Fire.shared.uid,
     };
   }
 
   componentDidMount() {
     const { route, navigation } = this.props;
-    const { name } = route.params;
+    const { name, isDesigner } = route.params;
+
+    console.log(this.props.route.params);
 
     navigation.setOptions({
-      headerRight: () => (
-        <IconButton icon='account-edit' color='#007FFF' size={25} onPress={() => this.reviewAlert(name)} />
-      ),
+      headerLeft: () => {
+        return isDesigner ? (
+          <TouchableOpacity onPress={() => this.endAlert(navigation)} style={styles.connectBtn}>
+            <Text style={styles.connectText}>End</Text>
+          </TouchableOpacity>
+        ) : null;
+      },
+      headerRight: () => {
+        return isDesigner ? null : (
+          <IconButton icon='account-edit' color='#007FFF' size={25} onPress={() => this.reviewAlert(name)} />
+        );
+      },
     });
 
     Fire.shared.on(message => {
@@ -78,13 +89,17 @@ class Chat extends Component {
         {...props}
         textStyle={{
           right: {
-            color: 'red',
+            color: 'white',
+            fontWeight: '600',
           },
-          left: {},
+          left: {
+            color: 'white',
+            fontWeight: '600',
+          },
         }}
         wrapperStyle={{
           left: {
-            backgroundColor: 'yellow',
+            backgroundColor: 'blue',
           },
           right: {
             backgroundColor: 'green',
@@ -106,6 +121,19 @@ class Chat extends Component {
       {
         text: 'Review',
         onPress: () => navigation.navigate('Review', { name, key }),
+      },
+    ]);
+  };
+
+  endAlert = navigation => {
+    Alert.alert('End conversation', '', [
+      {
+        text: 'No',
+        style: 'cancel',
+      },
+      {
+        text: 'Yes',
+        onPress: () => navigation.navigate('viewingAsID'),
       },
     ]);
   };
@@ -174,6 +202,15 @@ const styles = StyleSheet.create({
     height: 10,
     width: 10,
     backgroundColor: 'blue',
+  },
+  connectBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  connectText: {
+    fontSize: 17,
+    color: '#007FFF',
+    marginLeft: 10,
   },
 });
 

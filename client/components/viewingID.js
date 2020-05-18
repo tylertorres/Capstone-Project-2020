@@ -103,54 +103,52 @@ const viewingID = ({ route, navigation }) => {
       image:
         'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
       description:
-        'Testing how exactly i will do things in this way and which they will be playing. As you can see this room exhibits qualites of a major hardcore fucking man  and that is his life goal to be and be ambgious as hell.',
+        'Testing how exactly i will do things in this way and which they will be playing. As you can see this room exhibits qualites of a major hardcore man and that is his life goal to be and be ambgious as hell.',
     },
     {
       id: '2',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+        'https://www.mydomaine.com/thmb/FYZUwRE2KjWot0IYUVXVTu0YZbk=/1500x1500/smart/filters:no_upscale()/KatherineCarter-c674461f12354fdc956b6b5e0185c5cd.jpg',
       description: 'Testing how exactly i will do things in this way and which they will be playing',
     },
     {
       id: '3',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+        'https://p7.hiclipart.com/preview/585/287/766/interior-design-services-architecture-drawing-sketch-interior-designer.jpg',
       description: 'Testing how exactly i will do things in this way and which they will be playing',
     },
     {
       id: '4',
-      image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+      image: 'https://www.dhoumm.co/cdn-k1/no/interior-design-wallpaper-background_room-interior-and-decoration.jpg',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
     {
       id: '5',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+        'https://img.freepik.com/free-photo/modern-workspace-with-futuristic-background_23-2148327021.jpg?size=626&ext=jpg',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
     {
       id: '6',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+        'https://fthmb.tqn.com/kVpo4zFn-IRel7_g-hB3vXseD0A=/puresaltinteriors.-cb503015f1954be8ab6f750cda87a326.jpg',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
     {
       id: '7',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+        'https://i7.pngguru.com/preview/633/993/215/bookcase-interior-design-services-designer-creative-interior-design.jpg',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
     {
       id: '8',
       image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRl9lxsiiXx7-CldlpvNM5vlPG__d4jyr9UmvkCl_6pQAhEJBov&usqp=CAU',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
     {
       id: '9',
-      image:
-        'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
+      image: 'https://i.pinimg.com/originals/0b/ba/30/0bba3056e8720649e305f5b49173d77e.jpg',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
   ];
@@ -167,46 +165,98 @@ const viewingID = ({ route, navigation }) => {
       key: '2',
       name: 'Henry Smith',
       rating: 4,
+      description: 'Great communication when I ...',
     },
     {
       key: '3',
       name: 'Stacey Wayne',
       rating: 3,
+      description: 'Helped me at every step of the ...',
     },
     {
       key: '4',
       name: 'Roger Davis',
       rating: 4,
+      description: 'Provided some great advice ...',
     },
     {
       key: '5',
       name: 'Amy Yam',
       rating: 4,
+      description: 'Was very clear in explaining ...',
     },
     {
       key: '6',
       name: 'Janice Lema',
       rating: 4,
+      description: 'Was very helpful in designing my room ...',
     },
     {
       key: '7',
       name: 'Stephen Chia',
       rating: 5,
+      description: 'Answered my questions ...',
     },
-    { key: '8', name: 'Ranee Rausch', rating: 4 },
-    { key: '9', name: 'Denis Pinter', rating: 3 },
-    { key: '10', name: 'Juliana Whitner', rating: 4 },
-    { key: '11', name: 'Darnell Ferrero', rating: 2 },
-    { key: '12', name: 'Karrie Noblitt', rating: 2 },
-    { key: '13', name: 'Mohamed Li', rating: 5 },
+    {
+      key: '8',
+      name: 'Ranee Rausch',
+      rating: 4,
+      description: 'Very insighful room layouts ...',
+    },
+    {
+      key: '9',
+      name: 'Denis Pinter',
+      rating: 3,
+      description: 'Caring individual and thought oriented ...',
+    },
+    {
+      key: '10',
+      name: 'Juliana Whitner',
+      rating: 4,
+      description: 'Took time to explain nuances of room ...',
+    },
+    {
+      key: '11',
+      name: 'Darnell Ferrero',
+      rating: 2,
+      description: 'Very cool! Talked to me nicely ...',
+    },
+    {
+      key: '12',
+      name: 'Karrie Noblitt',
+      rating: 2,
+      description: 'Caring and understanding of time ...',
+    },
+    {
+      key: '13',
+      name: 'Mohamed Li',
+      rating: 5,
+      description: 'Very cool, very nice, 10 /10 ...',
+    },
     {
       key: '14',
       name: 'Aurelia Farnum',
       rating: 3,
+      description: 'Had my doubts in the beginning but pulled around ...',
     },
-    { key: '15', name: 'Ben Breeding', rating: 3 },
-    { key: '16', name: 'Ollie Moniz', rating: 4 },
-    { key: '17', name: 'Daniel Carrales', rating: 4 },
+    {
+      key: '15',
+      name: 'Ben Breeding',
+      rating: 3,
+      description: 'They had me in the first half not gonna lie ...',
+    },
+    {
+      key: '16',
+      name: 'Ollie Moniz',
+      rating: 4,
+      description: 'I highly recommend choosing this designer! ...',
+    },
+    {
+      key: '17',
+      name: 'Daniel Carrales',
+      rating: 4,
+      description: 'Will be utilizing his services again! ...',
+    },
   ];
 
   const setupModal = item => {
@@ -225,7 +275,6 @@ const viewingID = ({ route, navigation }) => {
   };
 
   // Review Modal //
-
   const setupReviewModal = item => {
     setReviewModal(!reviewModal);
     setReviewModalInfo(item);
