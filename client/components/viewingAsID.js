@@ -18,6 +18,7 @@ import { IconButton } from 'react-native-paper';
 import { render } from 'react-dom';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import UserContext from './context/user/userContext';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const Nav = ({ navigation, setMainView }) => {
   const [onPortfolio, setPortfolio] = useState(true);
@@ -39,9 +40,9 @@ const Nav = ({ navigation, setMainView }) => {
   );
 };
 
-const PortfolioItem = ({ item, onPress }) => {
+const PortfolioItem = ({ item, onPress, deleteItem }) => {
   return (
-    <TouchableOpacity onPress={() => onPress()}>
+    <TouchableOpacity onLongPress={() => deleteItem()} onPress={() => onPress()}>
       <Image style={styles.portfolioImage} source={{ uri: item.image }} />
     </TouchableOpacity>
   );
@@ -78,8 +79,19 @@ const renderSeparator = () => {
 
 const viewingAsID = ({ navigation }) => {
   const userContext = useContext(UserContext);
-  const { name, profilePic, bio } = userContext;
+  const { name, profilePic, bio, active } = userContext;
   const [save, setSave] = useState(false);
+
+  const onImageSubmission = () => {
+    ImagePicker.openPicker({ maxFiles: 1 })
+      .then(image => {
+        setImageUpload(image.path);
+        setUploadModal();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     const parent = navigation.dangerouslyGetParent();
@@ -89,10 +101,10 @@ const viewingAsID = ({ navigation }) => {
 
     navigation.setOptions({
       title: name,
-      headerLeft: () => null,
+      headerLeft: () => <IconButton icon='camera' onPress={() => onImageSubmission()} color='#007FFF' size={23} />,
       headerRight: () => {
         return save ? (
-          <TouchableOpacity onPress={() => navigation.navigate('Request', { name })} style={styles.connectBtn}>
+          <TouchableOpacity onPress={() => saveState()} style={styles.connectBtn}>
             <Text style={styles.connectText}>Save</Text>
           </TouchableOpacity>
         ) : (
@@ -108,8 +120,14 @@ const viewingAsID = ({ navigation }) => {
   const [columnCount, setCount] = useState(2);
   const [reviewModal, setReviewModal] = useState(false);
   const [reviewModalInfo, setReviewModalInfo] = useState({});
+  const [bioText, setBioText] = useState(bio);
+  const [isActive, setActive] = useState(active);
+  const [deleting, setDeleting] = useState(false);
+  const [uploadImage, setImageUpload] = useState(null);
+  const [uploadModal, setUpload] = useState(false);
+  const [imageDesc, setDesc] = useState('');
 
-  const portfolioImages = [
+  const [portfolioImages, setImages] = useState([
     {
       id: '1',
       image:
@@ -165,8 +183,7 @@ const viewingAsID = ({ navigation }) => {
         'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
       description: 'Testing how exactly I will do things in this way and which they will be playing',
     },
-  ];
-
+  ]);
   const reviews = [
     {
       key: '1',
@@ -221,6 +238,12 @@ const viewingAsID = ({ navigation }) => {
     { key: '17', name: 'Daniel Carrales', rating: 4 },
   ];
 
+  // Upload //
+
+  const setUploadModal = () => {
+    setUpload(!uploadModal);
+  };
+
   const setupModal = item => {
     setModal(!modalOpen);
     setModalInfo(item);
@@ -229,6 +252,7 @@ const viewingAsID = ({ navigation }) => {
   const closeModal = () => {
     setModal(!modalOpen);
     setModalInfo({});
+    setDeleting(false);
   };
 
   const setupLayout = bool => {
@@ -254,13 +278,10 @@ const viewingAsID = ({ navigation }) => {
       {
         text: 'Change Bio',
         onPress: () => setSave(!save),
-
-        // Change the button to save
-        // Change state of edit
-        // When save is clicked,
       },
       {
-        text: 'Change Profile Picture',
+        text: 'Set Status',
+        onPress: () => setStatus(),
       },
       {
         text: 'Back',
@@ -268,18 +289,63 @@ const viewingAsID = ({ navigation }) => {
     ]);
   };
 
+  const saveState = () => {
+    setSave(!save);
+  };
+
+  const setStatus = () => {
+    Alert.alert('Status', 'Change Status', [
+      {
+        text: 'Inactive',
+        onPress: () => setActive(false),
+        style: 'cancel',
+      },
+      {
+        text: 'Active',
+        onPress: () => setActive(true),
+      },
+    ]);
+  };
+
+  const deleteItem = item => {
+    setDeleting(true);
+    setupModal(item);
+  };
+
+  const finalizeDelete = () => {
+    setImages(portfolioImages.filter(image => image.id != modalInfo.id));
+    closeModal();
+  };
+
+  const finalizeUpload = () => {
+    const newItem = {
+      id: Math.random() * 10 + 101,
+      image: uploadImage,
+      description: imageDesc,
+    };
+
+    setImages([newItem, ...portfolioImages]);
+    setUpload(false);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Avatar size={115} rounded source={{ uri: profilePic }} />
+        <Avatar
+          containerStyle={isActive ? { borderWidth: 2.5, borderColor: 'green' } : {}}
+          size={115}
+          rounded
+          source={{ uri: 'https://i.picsum.photos/id/1027/2848/4272.jpg' }}
+        />
         <TextInput
+          onChangeText={text => setBioText(text)}
           maxLength={200}
           multiline={true}
           numberOfLines={0}
           editable={save ? true : false}
           style={styles.headerText}
         >
-          This is random text to test how to make it more user friendly
+          {bioText}
         </TextInput>
       </View>
       <View>
@@ -292,7 +358,9 @@ const viewingAsID = ({ navigation }) => {
             numColumns={columnCount}
             key={columnCount}
             keyExtractor={item => item.id}
-            renderItem={({ item }) => <PortfolioItem onPress={() => setupModal(item)} item={item} />}
+            renderItem={({ item }) => (
+              <PortfolioItem deleteItem={() => deleteItem(item)} onPress={() => setupModal(item)} item={item} />
+            )}
           />
         ) : (
           <FlatList
@@ -334,9 +402,37 @@ const viewingAsID = ({ navigation }) => {
               </View>
               <View style={styles.modalTextContainer}>
                 <Text style={styles.modalText}>{modalInfo.description}</Text>
+                {deleting && (
+                  <View style={styles.deleteContainer}>
+                    <TouchableOpacity onPress={() => finalizeDelete()} activeOpacity={0.7} style={styles.deleteBtn}>
+                      <Text style={styles.deleteBtnText}>Delete</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
               </View>
             </View>
           </TouchableOpacity>
+        </Modal>
+
+        <Modal animationType='slide' visible={uploadModal} transparent>
+          <View style={styles.uploadModal}>
+            <View style={styles.uploadView}>
+              <Image style={styles.modalImage} source={{ uri: uploadImage }} />
+              <View style={styles.uploadTextContainer}>
+                <TextInput
+                  maxLength={100}
+                  placeholder='Type a descriptionn...'
+                  multiline={true}
+                  numberOfLines={0}
+                  style={styles.uploadText}
+                  onChangeText={text => setDesc(text)}
+                />
+              </View>
+              <TouchableOpacity onPress={() => finalizeUpload()} activeOpacity={0.7} style={styles.uploadBtn}>
+                <Text style={styles.uploadBtnText}>Upload</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </Modal>
       </View>
     </SafeAreaView>
@@ -418,7 +514,6 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   modalView: {
-    height: 400,
     backgroundColor: 'white',
     borderRadius: 30,
     padding: 0,
@@ -434,8 +529,8 @@ const styles = StyleSheet.create({
   modalImage: {
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    width: 400,
-    height: 250,
+    width: 405,
+    height: 225,
   },
   modalTextContainer: {
     padding: 15,
@@ -496,6 +591,65 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: '600',
     padding: 15,
+  },
+  deleteContainer: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
+  deleteBtn: {
+    alignItems: 'center',
+    borderWidth: 0.2,
+    borderColor: 'lightgrey',
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: '#528c9e',
+    width: 150,
+  },
+  deleteBtnText: {
+    color: 'white',
+  },
+  uploadModal: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  uploadView: {
+    backgroundColor: 'white',
+    borderRadius: 30,
+    padding: 0,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 10,
+  },
+  uploadTextContainer: {
+    padding: 15,
+    width: '95%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  uploadText: {
+    fontSize: 16,
+    fontFamily: 'Avenir-Roman',
+  },
+  uploadBtn: {
+    alignSelf: 'center',
+    borderWidth: 0.2,
+    borderColor: 'lightgrey',
+    borderRadius: 10,
+    padding: 10,
+    backgroundColor: '#528c9e',
+    width: 150,
+    marginTop: 15,
+    marginBottom: 10,
+  },
+  uploadBtnText: {
+    color: 'white',
+    textAlign: 'center',
   },
 });
 

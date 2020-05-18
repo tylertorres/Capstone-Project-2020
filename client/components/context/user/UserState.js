@@ -12,6 +12,7 @@ const UserState = props => {
       //IDs
       profilePic: '',
       bio: '',
+      active: false,
     },
   };
 

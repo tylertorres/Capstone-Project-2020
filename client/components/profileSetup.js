@@ -19,9 +19,7 @@ export default profileSetup = ({ navigation }) => {
   function combined() {
     backend();
 
-    selectedValue === 'id'
-      ? navigation.navigate('Find a Designer')
-      : navigation.navigate('ID', { name: user, id: 'ID' });
+    selectedValue === 'id' ? navigation.navigate('Find a Designer') : navigation.navigate('viewingAsID');
   }
 
   return (
