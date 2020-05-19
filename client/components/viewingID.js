@@ -103,7 +103,7 @@ const viewingID = ({ route, navigation }) => {
       image:
         'https://external-content.duckduckgo.com/iu/?u=https://i.ytimg.com/vi/JZOIUT88EVc/hqdefault.jpg&f=1&nofb=1',
       description:
-        'Testing how exactly i will do things in this way and which they will be playing. As you can see this room exhibits qualites of a major hardcore man and that is his life goal to be and be ambgious as hell.',
+        'A room themed around a certain color and aesthetic that captured the embodiment of the people living there.',
     },
     {
       id: '2',

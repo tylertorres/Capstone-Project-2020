@@ -13,7 +13,7 @@ class Chat extends Component {
 
   get user() {
     return {
-      name: 'Nick Samaroo',
+      name: 'Samaroo',
       _id: Fire.shared.uid,
     };
   }

@@ -14,6 +14,7 @@ const UserState = props => {
       bio: '',
       active: false,
     },
+    items: [],
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
