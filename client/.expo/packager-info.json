@@ -1,10 +1,10 @@
 {
-  "devToolsPort": 19004,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 22472,
+  "expoServerNgrokUrl": "https://hj-k4a.anonymous.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.hj-k4a.anonymous.client.exp.direct",
+  "ngrokPid": 12556,
   "webpackServerPort": null
 }
