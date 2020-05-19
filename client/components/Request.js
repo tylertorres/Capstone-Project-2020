@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TextInput, TouchableOpacity, View, StyleSheet, Text, Image, ActivityIndicator } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import Fire from '../firebase/Fire';
+import UserContext from './context/user/userContext';
 
 const Request = ({ route, navigation }) => {
   const [text, setText] = useState('');
   const [images, setImages] = useState(null);
   const [indicator, setIndicator] = useState(false);
+
+  const userContext = useContext(UserContext);
+  const { user } = userContext;
 
   const { name } = route.params;
   const { key } = route;
@@ -57,7 +61,7 @@ const Request = ({ route, navigation }) => {
     Fire.shared.send(msgArray);
     setTimeout(() => {
       setIndicator(false);
-      navigation.navigate('Chat', { name, key });
+      navigation.navigate('Chat', { name, key, user });
     }, 3000);
   };
 

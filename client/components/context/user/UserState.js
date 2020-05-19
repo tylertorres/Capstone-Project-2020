@@ -10,23 +10,26 @@ const UserState = props => {
       email: '',
       name: '',
       //IDs
-      profilePic: '',
+      photo: '',
       bio: '',
+      active: false,
     },
+    items: [],
   };
 
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
   const SetUserInfo = userInfo => {
     const { user } = userInfo;
-    const { email, name, id, profilePic, bio } = user;
+    const { email, name, id, photo } = user;
 
     var userInd = {
       email,
       name,
       id,
-      profilePic,
-      bio,
+      photo,
+      bio: '',
+      active: false,
     };
 
     dispatch({
@@ -35,18 +38,11 @@ const UserState = props => {
     });
   };
 
-  const GetUserInfo = () => {
-    dispatch({
-      type: Get,
-    });
-  };
-
   return (
     <UserContext.Provider
       value={{
         user: state.user,
         SetUserInfo,
-        GetUserInfo,
       }}
     >
       {props.children}
