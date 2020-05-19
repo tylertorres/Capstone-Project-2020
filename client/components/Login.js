@@ -71,8 +71,8 @@ const Login = ({ navigation }) => {
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Light}
         style={styles.buttonContainer}
-        //onPress={_signIn}
-        onPress={() => navigation.navigate("Chat", { name: "Tyler Torres" })}
+        /* onPress={_signIn} */
+        onPress={() => navigation.navigate("profileSetup")}
       />
     </ImageBackground>
   );
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: 192,
-    height: 70,
+    height: 50,
     alignSelf: "center",
     marginTop: 350,
   },
