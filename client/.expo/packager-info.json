@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
@@ -7,14 +6,5 @@
   "expoServerNgrokUrl": "https://hj-k4a.anonymous.client.exp.direct",
   "packagerNgrokUrl": "https://packager.hj-k4a.anonymous.client.exp.direct",
   "ngrokPid": 12556,
-=======
-  "devToolsPort": 19004,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
->>>>>>> parent of b56f43f... bfwfbewbh
   "webpackServerPort": null
 }
