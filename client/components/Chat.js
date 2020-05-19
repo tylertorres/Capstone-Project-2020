@@ -1,9 +1,17 @@
-import React, { Component, useState, useEffect } from 'react';
-import { View, Text, SafeAreaView, StyleSheet, TouchableOpacity, Image, Alert } from 'react-native';
-import { IconButton } from 'react-native-paper';
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
-import Fire from '../firebase/Fire';
-import ImagePicker from 'react-native-image-crop-picker';
+import React, { Component, useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from "react-native";
+import { IconButton } from "react-native-paper";
+import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import Fire from "../firebase/Fire";
+import ImagePicker from "react-native-image-crop-picker";
 
 class Chat extends Component {
   state = {
@@ -13,7 +21,7 @@ class Chat extends Component {
 
   get user() {
     return {
-      name: 'Tyler',
+      name: "Nick Samaroo",
       _id: Fire.shared.uid,
     };
   }
@@ -24,12 +32,17 @@ class Chat extends Component {
 
     navigation.setOptions({
       headerRight: () => (
-        <IconButton icon='account-edit' color='#007FFF' size={25} onPress={() => this.reviewAlert(name)} />
+        <IconButton
+          icon="account-edit"
+          color="#007FFF"
+          size={25}
+          onPress={() => this.reviewAlert(name)}
+        />
       ),
     });
 
-    Fire.shared.on(message => {
-      this.setState(previousState => ({
+    Fire.shared.on((message) => {
+      this.setState((previousState) => ({
         messages: GiftedChat.append(previousState.messages, message),
       }));
     });
@@ -41,27 +54,27 @@ class Chat extends Component {
 
   onImageSubmission = () => {
     ImagePicker.openPicker({ multiple: true, maxFiles: 3 })
-      .then(images => {
+      .then((images) => {
         this.setState({ images });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
 
-  onSend = messages => {
+  onSend = (messages) => {
     var msgArray = [];
     var initialMsg = messages[0];
 
     if (this.state.images != null) {
       for (let img of this.state.images) {
         var newMessage = Object.assign({}, initialMsg);
-        newMessage.text = '';
+        newMessage.text = "";
         newMessage.image = img;
         msgArray.push(newMessage);
       }
     }
-    initialMsg.image = '';
+    initialMsg.image = "";
     msgArray.push(initialMsg);
 
     Fire.shared.send(msgArray);
@@ -72,40 +85,40 @@ class Chat extends Component {
   };
 
   // this will allow custom bubbles
-  renderBubble = props => {
+  renderBubble = (props) => {
     return (
       <Bubble
         {...props}
         textStyle={{
           right: {
-            color: 'red',
+            color: "red",
           },
           left: {},
         }}
         wrapperStyle={{
           left: {
-            backgroundColor: 'yellow',
+            backgroundColor: "yellow",
           },
           right: {
-            backgroundColor: 'green',
+            backgroundColor: "green",
           },
         }}
       />
     );
   };
 
-  reviewAlert = name => {
+  reviewAlert = (name) => {
     const { navigation, route } = this.props;
     const { key } = route.params;
-    Alert.alert(`Leave a Review for ${name}`, '', [
+    Alert.alert(`Leave a Review for ${name}`, "", [
       {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel pressed'),
-        style: 'cancel',
+        text: "Cancel",
+        onPress: () => console.log("Cancel pressed"),
+        style: "cancel",
       },
       {
-        text: 'Review',
-        onPress: () => navigation.navigate('Review', { name, key }),
+        text: "Review",
+        onPress: () => navigation.navigate("Review", { name, key }),
       },
     ]);
   };
@@ -114,21 +127,24 @@ class Chat extends Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.upload}>
-          <TouchableOpacity style={styles.button} onPress={this.onImageSubmission}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={this.onImageSubmission}
+          >
             <Text>Upload</Text>
           </TouchableOpacity>
         </View>
         <GiftedChat
           messages={this.state.messages}
-          onSend={messages => this.onSend(messages)}
+          onSend={(messages) => this.onSend(messages)}
           user={this.user}
           renderBubble={this.renderBubble}
           alwaysShowSend
-          placeholder='Type a message...'
+          placeholder="Type a message..."
         />
         {this.state.images && (
           <View style={styles.preview}>
-            {this.state.images.map(image => (
+            {this.state.images.map((image) => (
               <Image
                 key={image.id}
                 source={{
@@ -149,31 +165,31 @@ class Chat extends Component {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   upload: {
-    alignItems: 'stretch',
-    justifyContent: 'space-around',
-    flexDirection: 'row',
+    alignItems: "stretch",
+    justifyContent: "space-around",
+    flexDirection: "row",
   },
   button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
     padding: 10,
-    width: '100%',
+    width: "100%",
   },
   img: {
     borderRadius: 100,
     margin: 10,
   },
   preview: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
     padding: 15,
   },
   addImg: {
-    color: 'cyan',
+    color: "cyan",
     height: 10,
     width: 10,
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
   },
 });
 
