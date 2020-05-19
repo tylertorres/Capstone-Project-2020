@@ -35,7 +35,6 @@ target 'test' do
   pod 'DoubleConversion', :podspec => "#{rnPrefix}/third-party-podspecs/DoubleConversion.podspec"
   pod 'glog', :podspec => "#{rnPrefix}/third-party-podspecs/glog.podspec"
   pod 'Folly', :podspec => "#{rnPrefix}/third-party-podspecs/Folly.podspec"
-  pod 'RNGoogleSignin', :path => '../node_modules\react-native-google-signin\src\GoogleSignin'
 
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
